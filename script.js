@@ -185,6 +185,7 @@ document.querySelectorAll('.logo-process').forEach(root => {
 const sitemapCanvas = document.getElementById('sitemapCanvas');
 if (sitemapCanvas) {
   const scrollEl = sitemapCanvas.querySelector('.sitemap__scroll');
+  const canvasOuter = sitemapCanvas.querySelector('.sitemap__canvas-outer');
   const canvasEl = sitemapCanvas.querySelector('.sitemap__canvas');
   const svg = document.getElementById('sitemapEdges');
   const rows = Array.from(canvasEl.querySelectorAll('.sm-row[data-target]'));
@@ -193,11 +194,37 @@ if (sitemapCanvas) {
 
   const SVG_NS = 'http://www.w3.org/2000/svg';
   const edges = [];
+  const CANVAS_W = 1700, CANVAS_H = 990;
+  const MIN_SCALE = 0.35, MAX_SCALE = 1.6;
+  let scale = 1;
 
+  // getBoundingClientRect() returns post-transform (already-scaled) screen pixels,
+  // but the SVG's own path coordinates live in the canvas's untransformed logical
+  // space (the transform scales the whole SVG along with everything else) — so
+  // divide back out by the current scale to keep the two in sync.
   function rectIn(el) {
     const r = el.getBoundingClientRect();
     const c = canvasEl.getBoundingClientRect();
-    return { left: r.left - c.left, top: r.top - c.top, right: r.right - c.left, bottom: r.bottom - c.top, width: r.width, height: r.height };
+    return {
+      left: (r.left - c.left) / scale,
+      top: (r.top - c.top) / scale,
+      right: (r.right - c.left) / scale,
+      bottom: (r.bottom - c.top) / scale,
+      width: r.width / scale,
+      height: r.height / scale
+    };
+  }
+
+  function applyScale(next) {
+    scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, next));
+    canvasEl.style.transform = `scale(${scale})`;
+    canvasOuter.style.width = (CANVAS_W * scale) + 'px';
+    canvasOuter.style.height = (CANVAS_H * scale) + 'px';
+    updatePaths();
+  }
+
+  function fitScale() {
+    return Math.min(scrollEl.clientWidth / CANVAS_W, scrollEl.clientHeight / CANVAS_H, 1);
   }
 
   // Right-angle-ish connector: exits the row's nearer side, enters the target's
@@ -250,8 +277,18 @@ if (sitemapCanvas) {
   }
 
   buildEdges();
-  updatePaths();
-  window.addEventListener('resize', updatePaths);
+  applyScale(fitScale());
+  window.addEventListener('resize', () => applyScale(scale));
+
+  sitemapCanvas.querySelectorAll('.sitemap__zoom-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const action = btn.dataset.zoom;
+      if (action === 'in') applyScale(scale + 0.2);
+      else if (action === 'out') applyScale(scale - 0.2);
+      else if (action === 'fit') applyScale(fitScale());
+    });
+  });
 
   function clearActive() {
     edges.forEach(({ row, targetNode, path, dot }) => {

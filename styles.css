@@ -1314,7 +1314,7 @@ img.badge--photo{
 }
 
 /* Interactive site map: recreated from Figma components instead of a flat image */
-.sitemap{margin-top:24px;margin-left:-20px;margin-right:-20px;}
+.sitemap{margin-top:24px;margin-left:-20px;margin-right:-20px;position:relative;}
 .sitemap__scroll{
   position:relative;
   height:640px;
@@ -1326,11 +1326,46 @@ img.badge--photo{
   cursor:grab;
 }
 .sitemap__scroll.is-dragging{cursor:grabbing;user-select:none;}
-.sitemap__canvas{
+.sitemap__canvas-outer{
   position:relative;
   width:1700px;
   height:990px;
 }
+.sitemap__canvas{
+  position:relative;
+  width:1700px;
+  height:990px;
+  transform-origin:0 0;
+}
+.sitemap__zoom{
+  position:absolute;
+  top:12px;
+  right:32px;
+  z-index:3;
+  display:flex;
+  gap:6px;
+  background:rgba(255,255,255,.92);
+  padding:6px;
+  border-radius:var(--radius-sm);
+  box-shadow:var(--shadow);
+}
+.sitemap__zoom-btn{
+  width:30px;
+  height:30px;
+  border:none;
+  border-radius:8px;
+  background:var(--card-alt,#fff);
+  color:var(--ink);
+  font-size:1rem;
+  line-height:1;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .15s ease;
+}
+.sitemap__zoom-btn:hover{background:#eee;}
+.sitemap__zoom-btn--fit{width:auto;padding:0 10px;font-size:.7rem;font-weight:600;font-family:'Quicksand',sans-serif;}
 .sitemap__edges{
   position:absolute;
   inset:0;
