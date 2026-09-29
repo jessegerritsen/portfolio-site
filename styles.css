@@ -788,7 +788,7 @@ img.badge--photo{
   margin-right:calc(50% - 50vw);
 }
 .case-study--light{
-  --cs-bg:#fdfcf9;
+  --cs-bg:var(--bg);
   --cs-text:#181716;
   --cs-text-soft:#7a766e;
   --cs-accent:#e0b23f;
@@ -1111,6 +1111,7 @@ img.badge--photo{
 /* iPhone mockup */
 .phone-marquee{
   overflow:hidden;
+  margin-top:48px;
   margin-left:-20px;
   margin-right:-20px;
   -webkit-mask-image:linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
