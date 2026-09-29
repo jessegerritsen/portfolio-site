@@ -1111,9 +1111,10 @@ img.badge--photo{
 /* iPhone mockup */
 .phone-marquee{
   overflow:hidden;
-  width:100%;
-  -webkit-mask-image:linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
-  mask-image:linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
+  margin-left:-20px;
+  margin-right:-20px;
+  -webkit-mask-image:linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+  mask-image:linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
 }
 .phone-marquee__track{
   display:flex;
