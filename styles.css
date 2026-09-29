@@ -1109,13 +1109,33 @@ img.badge--photo{
 }
 
 /* iPhone mockup */
-.phone-tiles{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:56px 28px;
-  align-items:start;
+.phone-marquee{
+  overflow:hidden;
+  width:100%;
+  -webkit-mask-image:linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
+  mask-image:linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
 }
-.phone-tile{position:relative;}
+.phone-marquee__track{
+  display:flex;
+  width:max-content;
+  animation:phoneMarquee 38s linear infinite;
+}
+.phone-marquee:hover .phone-marquee__track{animation-play-state:paused;}
+@keyframes phoneMarquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion: reduce){
+  .phone-marquee__track{animation:none;}
+}
+.phone-tiles{
+  display:flex;
+  gap:28px;
+  align-items:start;
+  padding:32px 0;
+  flex-shrink:0;
+}
+.phone-tile{position:relative;width:210px;flex-shrink:0;}
 .phone-tile__caption{
   text-align:center;
   font-size:.75rem;
@@ -1192,7 +1212,7 @@ img.badge--photo{
 .iphone--lead{width:34%;max-width:200px;z-index:2;}
 
 /* Cart sheet stacked in front of another phone */
-.phone-tile--stacked{padding-bottom:22%;}
+.phone-tile--stacked{padding-bottom:46px;}
 .cart-sheet{
   position:absolute;
   left:50%;
