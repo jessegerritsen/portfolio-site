@@ -325,7 +325,17 @@ if (zoomableImages.length) {
     lightbox.classList.remove('is-open');
     document.documentElement.style.overflow = '';
   }
-  zoomableImages.forEach(img => img.addEventListener('click', () => openLightbox(img)));
+  zoomableImages.forEach(img => {
+    const wrap = document.createElement('span');
+    wrap.className = 'img-zoom-wrap';
+    img.parentNode.insertBefore(wrap, img);
+    wrap.appendChild(img);
+    const badge = document.createElement('span');
+    badge.className = 'img-zoom-badge';
+    badge.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
+    wrap.appendChild(badge);
+    img.addEventListener('click', () => openLightbox(img));
+  });
   lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) closeLightbox(); });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 }

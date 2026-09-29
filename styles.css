@@ -1003,6 +1003,28 @@ img.badge--photo{
   box-shadow:var(--shadow);
 }
 .full-image--flat{box-shadow:none;border-radius:var(--radius-md);cursor:zoom-in;}
+@media (max-width:700px){
+  .flow__step > .full-image--flat,
+  .flow__step > .img-zoom-wrap{
+    width:calc(100% + 52px);
+    margin-left:-52px;
+  }
+}
+.img-zoom-wrap{position:relative;display:block;}
+.img-zoom-badge{
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(20,20,20,.7);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+}
 .full-image--nobg{
   width:auto;
   max-width:85%;
@@ -1284,7 +1306,11 @@ img.badge--photo{
   z-index:4;
 }
 @media (max-width:560px){
-  .phone-tiles{gap:64px 20px;}
+  .phone-tiles{gap:16px;}
+  .phone-tile{width:140px;}
+}
+@media (max-width:380px){
+  .phone-tiles--static{flex-wrap:wrap;justify-content:center;row-gap:36px;}
 }
 
 /* Interactive site map: recreated from Figma components instead of a flat image */
