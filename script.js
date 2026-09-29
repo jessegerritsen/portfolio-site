@@ -56,13 +56,20 @@ function revealHeroBlob() {
   if (heroOrbitEl) heroOrbitEl.classList.add('is-visible');
 }
 
+// The full splash → drop → hero-blob sequence only ever plays once per visitor;
+// every later visit (including navigating back to the home page) skips straight
+// to the settled hero blob.
+let introAlreadySeen = false;
+try { introAlreadySeen = localStorage.getItem('introSeen') === '1'; } catch (e) {}
+
 if (introEl && dropEl) {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (introAlreadySeen || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     dropEl.remove();
     introEl.remove();
     if (heroBlobEl) heroBlobEl.classList.add('is-visible');
     if (heroOrbitEl) heroOrbitEl.classList.add('is-visible');
   } else {
+    try { localStorage.setItem('introSeen', '1'); } catch (e) {}
     document.documentElement.style.overflow = 'hidden';
     requestAnimationFrame(() => introEl.classList.add('is-text-visible'));
     setTimeout(() => introEl.classList.remove('is-text-visible'), 2400);
