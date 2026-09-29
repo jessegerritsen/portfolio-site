@@ -304,3 +304,28 @@ if (sitemapCanvas) {
     scrollEl.scrollTop = startScrollTop - (e.pageY - startY);
   });
 }
+
+// Tap-to-zoom lightbox for flat process images (sketches, wireframes, etc.) — these
+// are often wide composites that shrink to illegible thumbnails on mobile
+const zoomableImages = document.querySelectorAll('.full-image--flat');
+if (zoomableImages.length) {
+  const lightbox = document.createElement('div');
+  lightbox.className = 'img-lightbox';
+  lightbox.innerHTML = '<button class="img-lightbox__close" aria-label="Close">&times;</button><img alt="">';
+  document.body.appendChild(lightbox);
+  const lightboxImg = lightbox.querySelector('img');
+
+  function openLightbox(img) {
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('is-open');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.documentElement.style.overflow = '';
+  }
+  zoomableImages.forEach(img => img.addEventListener('click', () => openLightbox(img)));
+  lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) closeLightbox(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+}
