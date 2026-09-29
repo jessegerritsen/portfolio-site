@@ -918,13 +918,13 @@ img.badge--photo{
   .phone-row > img{max-width:47%;max-height:260px;}
 }
 
-/* Snapp hero: diagonal flat screens behind two phone mockups */
+/* Snapp hero: diagonal flat screens (pre-rotated source art) behind two phone mockups */
 .snapp-hero{
   position:relative;
   width:100%;
-  max-width:560px;
+  max-width:620px;
   margin:0 auto;
-  height:420px;
+  height:400px;
 }
 .snapp-hero__flats{
   position:absolute;
@@ -933,16 +933,13 @@ img.badge--photo{
 }
 .snapp-hero__flat{
   position:absolute;
-  width:36%;
-  max-width:180px;
-  border-radius:16px;
-  box-shadow:0 25px 45px rgba(0,0,0,.22);
-  border:1px solid rgba(0,0,0,.06);
+  width:34%;
+  max-width:190px;
   display:block;
 }
-.snapp-hero__flat--1{top:6%;left:0;transform:rotate(-16deg);}
-.snapp-hero__flat--2{top:30%;left:32%;transform:rotate(-9deg);z-index:1;}
-.snapp-hero__flat--3{top:2%;right:0;transform:rotate(-18deg);}
+.snapp-hero__flat--1{top:-4%;left:-2%;}
+.snapp-hero__flat--2{top:22%;left:33%;}
+.snapp-hero__flat--3{top:-6%;right:-2%;}
 .snapp-hero__phones{
   position:absolute;
   inset:0;
@@ -951,13 +948,18 @@ img.badge--photo{
   align-items:flex-end;
   justify-content:center;
 }
-.snapp-hero__phone{width:40%;max-width:210px;margin:0;}
-.snapp-hero__phone--1{transform:rotate(-4deg);margin-right:-22px;z-index:2;}
-.snapp-hero__phone--2{transform:rotate(4deg);margin-left:-22px;z-index:1;}
+.snapp-hero__phone{
+  width:38%;
+  max-width:200px;
+  margin:0;
+  filter:drop-shadow(0 25px 40px rgba(0,0,0,.35));
+}
+.snapp-hero__phone--1{transform:rotate(-4deg);margin-right:-20px;z-index:2;}
+.snapp-hero__phone--2{transform:rotate(4deg);margin-left:-20px;z-index:1;}
 @media (max-width:600px){
-  .snapp-hero{height:340px;}
+  .snapp-hero{height:320px;max-width:400px;}
   .snapp-hero__flat{max-width:130px;}
-  .snapp-hero__phone{max-width:160px;}
+  .snapp-hero__phone{max-width:150px;}
 }
 .case-study__info{
   text-align:center;
