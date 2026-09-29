@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiny Rocket — Maede Khademi</title>
+<meta name="description" content="Client project: Tiny Rocket web design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=1790675938_22339">
+</head>
+<body>
+
+<a class="floating-mail" href="mailto:maedekhademi@outlook.com" aria-label="Email Maede">
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 12 13l9-6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+  Mail
+</a>
+
+<main>
+  <section class="case-study">
+    <div class="case-study__glow"></div>
+    <div class="case-study__topbar">
+      <a class="case-study__back" href="../index.html#projects">
+        Back
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+    </div>
+    <div class="case-study__hero">
+      <div class="case-study__media">
+        <div class="mac-mockup">
+          <div class="mac-mockup__lid">
+            <div class="mac-mockup__notch"></div>
+            <div class="mac-mockup__screen">
+              <video src="../videos/tiny-rocket-demo.mp4" poster="../images/tiny-rocket-poster.jpg" autoplay muted loop playsinline controls></video>
+            </div>
+          </div>
+          <div class="mac-mockup__hinge"></div>
+          <div class="mac-mockup__base"></div>
+        </div>
+      </div>
+      <div class="case-study__info">
+        <h1>Tiny Rocket</h1>
+        <span class="case-study__eyebrow">Problem solved</span>
+        <p class="case-study__problem">A complete digital transformation for a Dutch manufacturer of sustainable rocket stoves.</p>
+        <div class="case-study__meta">
+          <span>Bachelor Thesis</span><br>
+          <span>6 months</span><br>
+          <span>Collaborated with Awear Startup</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="flow">
+
+      <div class="flow__step">
+        <span class="flow__num">01</span>
+        <span class="section-label">The brief</span>
+        <h3 class="section-heading">A stove brand with no digital identity yet</h3>
+        <p><strong>Tiny Rocket</strong> builds near-smokeless, 90%-efficient rocket-mass stoves. No site, no account area, no mark — the brief covered all three.</p>
+        <div class="brief-grid">
+          <div class="brief-card"><span class="brief-card__label">Role</span><p>Brand identity + full-stack web design, solo</p></div>
+          <div class="brief-card"><span class="brief-card__label">Scope</span><p>Logo, marketing site, customer accounts, stove configurator</p></div>
+        </div>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">02</span>
+        <span class="section-label">Branding &amp; logo</span>
+        <h3 class="section-heading">A mark that reads efficient, not rustic</h3>
+        <div class="logo-process">
+          <span class="logo-process__label">Reference → mark</span>
+          <div class="logo-process__circles">
+            <button class="logo-process__circle is-active" style="background-image:url(../images/tr-circle-flame.png)" data-caption="Real flame — the combustion the stove is built around, and the reason the icon had to glow, not sit flat." aria-label="Flame reference"></button>
+            <button class="logo-process__circle" style="background-image:url(../images/tr-circle-fingerprint.png)" data-caption="A fingerprint — every clay bench is hand-built to its room, so no two installs are quite the same." aria-label="Fingerprint reference"></button>
+            <button class="logo-process__circle" style="background-image:url(../images/tr-circle-wood.webp)" data-caption="Timber grain — the material the stoves actually sit in, and where the mark's warm palette comes from." aria-label="Wood grain reference"></button>
+            <svg class="logo-process__arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <div class="logo-process__result"><img src="../images/tr-logo-icon.png" alt="Tiny Rocket icon, distilled from flame, fingerprint and timber references"></div>
+          </div>
+          <p class="logo-process__caption">Real flame — the combustion the stove is built around, and the reason the icon had to glow, not sit flat.</p>
+          <img class="logo-process__full" src="../images/tr-logo-full.png" alt="Tiny Rocket full logo lockup: flame icon beside the tiny ROCKET wordmark">
+        </div>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">03</span>
+        <span class="section-label">Marketing site</span>
+        <h3 class="section-heading">Let the product photography do the selling</h3>
+        <p>Real rooms, real light, minimal copy — the homepage leads with a lit stove in a plant-filled living room, not a product catalog.</p>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">04</span>
+        <span class="section-label">Account area &amp; configurator</span>
+        <h3 class="section-heading">Everything after the sale, in one place</h3>
+        <p>Orders, install instructions, warranty — plus a stove configurator that carries floor type, bench side and finish straight through to checkout.</p>
+        <div class="two-photo">
+          <img class="full-image full-image--flat" src="../images/tr-web-hero.webp" alt="Tiny Rocket homepage hero: 75% minder fijnstof uitstoot, with a living room photo">
+          <img class="full-image full-image--flat" src="../images/tr-web-leemfinish.webp" alt="Leemfinish and leemverf finish picker section with colour swatches">
+        </div>
+        <div class="two-photo" style="margin-top:28px;">
+          <img class="full-image full-image--flat" src="../images/tr-web-dashboard-real.webp" alt="Full account dashboard: Hoi, MaedeTR, with orders, instructions and warranty-upload shortcuts">
+          <img class="full-image full-image--flat" src="../images/tr-web-login.webp" alt="Log in into your account screen">
+        </div>
+        <img class="full-image full-image--flat" style="margin-top:24px;" src="../images/tr-web-responsive.webp" alt="Tiny Rocket site shown responsively on tablet and phone mockups">
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section footer-section">
+    <div class="center">
+      <a href="mailto:maedekhademi@outlook.com" class="btn btn--dark">Connect with me <span class="arrow">↗</span></a>
+    </div>
+    <footer class="footer">
+      <span>© <span id="year"></span> Maede Khademi</span>
+      <div class="footer__links">
+        <a href="../index.html#home">Home</a>
+        <a href="../files/MKH-CV.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<script src="../script.js?v=1790675084_22058"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
