@@ -918,47 +918,25 @@ img.badge--photo{
   .phone-row > img{max-width:47%;max-height:260px;}
 }
 
-/* Snapp hero: diagonal flat screens (pre-rotated source art) behind two phone mockups */
+/* Snapp hero: three phone mockups placed side by side, cascading down-right */
 .snapp-hero{
   position:relative;
   width:100%;
-  max-width:620px;
+  max-width:640px;
   margin:0 auto;
-  height:400px;
-}
-.snapp-hero__flats{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-.snapp-hero__flat{
-  position:absolute;
-  width:34%;
-  max-width:190px;
-  display:block;
-}
-.snapp-hero__flat--1{top:-4%;left:-2%;}
-.snapp-hero__flat--2{top:22%;left:33%;}
-.snapp-hero__flat--3{top:-6%;right:-2%;}
-.snapp-hero__phones{
-  position:absolute;
-  inset:0;
-  z-index:2;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
+  height:460px;
 }
 .snapp-hero__phone{
-  width:38%;
-  max-width:200px;
-  margin:0;
-  filter:drop-shadow(0 25px 40px rgba(0,0,0,.35));
+  position:absolute;
+  width:31%;
+  max-width:210px;
+  filter:drop-shadow(0 25px 40px rgba(0,0,0,.3));
 }
-.snapp-hero__phone--1{transform:rotate(-4deg);margin-right:-20px;z-index:2;}
-.snapp-hero__phone--2{transform:rotate(4deg);margin-left:-20px;z-index:1;}
+.snapp-hero__phone--1{top:0;left:-2%;z-index:1;}
+.snapp-hero__phone--2{top:12%;left:32%;z-index:3;}
+.snapp-hero__phone--3{top:26%;left:65%;z-index:2;}
 @media (max-width:600px){
-  .snapp-hero{height:320px;max-width:400px;}
-  .snapp-hero__flat{max-width:130px;}
+  .snapp-hero{height:360px;max-width:420px;}
   .snapp-hero__phone{max-width:150px;}
 }
 .case-study__info{
