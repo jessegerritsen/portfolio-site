@@ -1246,12 +1246,11 @@ img.badge--photo{
 }
 
 /* Interactive site map: recreated from Figma components instead of a flat image */
-.sitemap{margin-top:24px;}
+.sitemap{margin-top:24px;margin-left:-20px;margin-right:-20px;}
 .sitemap__scroll{
   position:relative;
   height:640px;
   overflow:auto;
-  border-radius:var(--radius-md);
   background:
     radial-gradient(circle, rgba(0,0,0,.06) 1px, transparent 1px) 0 0/22px 22px,
     var(--card);
