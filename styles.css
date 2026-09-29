@@ -903,7 +903,7 @@ img.badge--photo{
   justify-content:center;
   gap:14px;
 }
-.phone-row img{
+.phone-row > img{
   width:auto;
   height:auto;
   max-width:32%;
@@ -915,7 +915,7 @@ img.badge--photo{
 .phone-row--mockups{align-items:flex-end;gap:0;}
 @media (max-width:820px){
   .phone-row{flex-wrap:wrap;}
-  .phone-row img{max-width:47%;max-height:260px;}
+  .phone-row > img{max-width:47%;max-height:260px;}
 }
 .case-study__info{
   text-align:center;
