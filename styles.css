@@ -282,6 +282,10 @@ img.badge--photo{
   border-radius:6px;
   margin-left:2px;
 }
+.color-palette{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px;}
+.color-swatch{width:84px;text-align:center;}
+.color-swatch__chip{width:84px;height:84px;border-radius:14px;box-shadow:var(--shadow);margin-bottom:8px;}
+.color-swatch__hex{font-size:.68rem;color:var(--ink-soft);font-family:'Quicksand',sans-serif;letter-spacing:.02em;}
 
 /* Grid / project cards */
 .grid{display:grid;gap:22px;}
