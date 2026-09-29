@@ -930,7 +930,7 @@ img.badge--photo{
   position:absolute;
   width:31%;
   max-width:210px;
-  filter:drop-shadow(0 25px 40px rgba(0,0,0,.3));
+  filter:drop-shadow(0 10px 14px rgba(0,0,0,.18));
 }
 .snapp-hero__phone--1{top:0;left:-2%;z-index:1;}
 .snapp-hero__phone--2{top:12%;left:32%;z-index:3;}
