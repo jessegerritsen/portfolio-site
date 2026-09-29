@@ -3,12 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tiny Rocket — Maede Khademi</title>
-<meta name="description" content="Client project: Tiny Rocket web design.">
+<title>Tiny Rocket — Case Study | Maede Khademi</title>
+<meta name="description" content="How I designed and built tinyrocket.nl on WordPress and Elementor for a Dutch sustainable-stove brand: branding, marketing site, and a WooCommerce account area.">
+<!-- TODO: replace YOUR-DOMAIN-HERE.com below once the portfolio has a final hosting domain -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tiny Rocket — Case Study | Maede Khademi">
+<meta property="og:description" content="How I designed and built tinyrocket.nl on WordPress and Elementor for a Dutch sustainable-stove brand: branding, marketing site, and a WooCommerce account area.">
+<meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/images/tiny-rocket-poster.jpg">
+<meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/projects/tiny-rocket.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tiny Rocket — Case Study | Maede Khademi">
+<meta name="twitter:description" content="How I designed and built tinyrocket.nl on WordPress and Elementor for a Dutch sustainable-stove brand.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=1790722039_33689">
+<link rel="stylesheet" href="../styles.css?v=1790722703_34199">
 </head>
 <body>
 
@@ -44,10 +53,12 @@
         <span class="case-study__eyebrow">Problem solved</span>
         <p class="case-study__problem">A complete digital transformation for a Dutch manufacturer of sustainable rocket stoves.</p>
         <div class="case-study__meta">
-          <span>Bachelor Thesis</span><br>
-          <span>6 months</span><br>
+          <span>Client project</span><br>
+          <span>8 months</span><br>
           <span>Collaborated with Awear Startup</span>
         </div>
+        <p class="case-study__tools">WordPress · Elementor · WooCommerce · Custom CSS/JS</p>
+        <a href="https://tinyrocket.nl/" target="_blank" rel="noopener" class="case-study__cta">View live site <span class="arrow">↗</span></a>
       </div>
     </div>
   </section>
@@ -61,7 +72,7 @@
         <h3 class="section-heading">A stove brand with no digital identity yet</h3>
         <p><strong>Tiny Rocket</strong> builds near-smokeless, 90%-efficient rocket-mass stoves. No site, no account area, no mark — the brief covered all three.</p>
         <div class="brief-grid">
-          <div class="brief-card"><span class="brief-card__label">Role</span><p>Brand identity + full-stack web design, solo</p></div>
+          <div class="brief-card"><span class="brief-card__label">Role</span><p>Brand identity + WordPress web design and development, solo</p></div>
           <div class="brief-card"><span class="brief-card__label">Scope</span><p>Logo, marketing site, customer accounts, stove configurator</p></div>
         </div>
       </div>
@@ -95,7 +106,7 @@
         <span class="flow__num">04</span>
         <span class="section-label">Account area &amp; configurator</span>
         <h3 class="section-heading">Everything after the sale, in one place</h3>
-        <p>Orders, install instructions, warranty — plus a stove configurator that carries floor type, bench side and finish straight through to checkout.</p>
+        <p>Orders, install instructions, warranty — plus a stove configurator that carries floor type, bench side and finish straight through to checkout. <span class="todo-flag">[TODO: confirm the full floor/bench/finish configurator is still live — I could only verify the finish/colour picker below]</span></p>
         <div class="two-photo">
           <img class="full-image full-image--flat" src="../images/tr-web-hero.webp" alt="Tiny Rocket homepage hero: 75% minder fijnstof uitstoot, with a living room photo">
           <img class="full-image full-image--flat" src="../images/tr-web-leemfinish.webp" alt="Leemfinish and leemverf finish picker section with colour swatches">
@@ -107,12 +118,43 @@
         <img class="full-image full-image--flat" style="margin-top:24px;" src="../images/tr-web-responsive.webp" alt="Tiny Rocket site shown responsively on tablet and phone mockups">
       </div>
 
+      <div class="flow__step">
+        <span class="flow__num">05</span>
+        <span class="section-label">Development</span>
+        <h3 class="section-heading">Built on WordPress, shaped by hand</h3>
+        <p>The site runs on WordPress with Elementor as the page-builder foundation and WooCommerce powering the store and account area, with custom CSS and JS layered on top wherever the page-builder's defaults didn't match the brand — the logo motion, the finish-picker interaction, and tightening the responsive behaviour across breakpoints rather than trusting Elementor's defaults alone. <span class="todo-flag">[TODO: confirm exact scope of custom code — which sections are pure Elementor vs hand-coded, so I can be specific rather than general]</span></p>
+        <div class="brief-grid">
+          <div class="brief-card"><span class="brief-card__label">Stack</span><p>WordPress, Elementor, WooCommerce, custom CSS/JS</p></div>
+          <div class="brief-card"><span class="brief-card__label">Also in the stack</span><p>Cookiebot for consent, Wordfence for security, an image-optimization plugin for the photography-heavy homepage</p></div>
+        </div>
+        <p>Accessibility followed the same practical approach as the rest of the build: semantic headings, alt text on every product and process image, and keyboard-operable interactive elements. <span class="todo-flag">[TODO: confirm whether a dedicated accessibility pass (contrast checks, screen-reader testing) was done, or whether this was best-effort alongside the build]</span></p>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">06</span>
+        <span class="section-label">Challenges &amp; solutions</span>
+        <h3 class="section-heading">Two problems worth naming</h3>
+        <p><strong>A page-builder, not a blank canvas.</strong> Elementor is built for speed, not for a distinctive brand feel — getting the logo motion and finish-picker interaction to feel intentional rather than templated meant writing custom CSS/JS on top of it instead of relying on stock widgets. <span class="todo-flag">[TODO: replace with your real account of this, or confirm this is accurate]</span></p>
+        <p><strong>A physical, technical product sold online.</strong> Explaining a self-install rocket-mass stove — floor clearance, bench side, finish — to a non-expert buyer needed to happen in plain language and a few clear choices, not a spec sheet. <span class="todo-flag">[TODO: replace with your real account of this, or confirm this is accurate]</span></p>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">07</span>
+        <span class="section-label">Results &amp; reflection</span>
+        <h3 class="section-heading">Live, selling, and still standing</h3>
+        <p>The site is live and taking real orders today — the "plug &amp; play" self-install pitch and the leemfinish/leemverf colour options are still exactly how customers configure a stove, and the homepage now carries genuine customer testimonials. I don't have analytics or conversion numbers to share here <span class="todo-flag">[TODO: add traffic/conversion numbers, or a launch date, if you want to include them]</span> — but the account area, order flow and finish picker all shipping and staying in use is the result I'm proudest of.</p>
+        <p>If I revisited this project now, I'd <span class="todo-flag">[TODO: what would you actually change? e.g. move more of the custom interaction out of Elementor, or add richer configurator previews]</span>.</p>
+      </div>
+
     </div>
   </section>
 
   <section class="section footer-section">
     <div class="center">
-      <a href="mailto:maedekhademi@outlook.com" class="btn btn--dark">Connect with me <span class="arrow">↗</span></a>
+      <div class="center__actions">
+        <a href="https://tinyrocket.nl/" target="_blank" rel="noopener" class="btn btn--outline">View live site <span class="arrow">↗</span></a>
+        <a href="mailto:maedekhademi@outlook.com" class="btn btn--dark">Contact me <span class="arrow">↗</span></a>
+      </div>
     </div>
     <footer class="footer">
       <span>© <span id="year"></span> Maede Khademi</span>
@@ -125,7 +167,7 @@
   </section>
 </main>
 
-<script src="../script.js?v=1790722039_33689"></script>
+<script src="../script.js?v=1790722703_34199"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
