@@ -780,7 +780,7 @@ img.badge--photo{
   --cs-pill-text:#2b2926;
   background:var(--cs-bg);
   color:var(--cs-text);
-  padding:28px 20px 72px;
+  padding:28px 20px 112px;
   position:relative;
   overflow:hidden;
   width:100vw;
