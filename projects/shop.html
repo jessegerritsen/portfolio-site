@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=1790720495_31836">
+<link rel="stylesheet" href="../styles.css?v=1790721098_32398">
 </head>
 <body>
 
@@ -85,8 +85,130 @@
         <span class="flow__num">03</span>
         <span class="section-label">Site map</span>
         <h3 class="section-heading">Mapping every screen before designing any of them</h3>
-        <p>A full site map — from onboarding through search, categories, deals, cart, profile, orders and wishlist — kept every screen's navigation consistent once high-fidelity design started.</p>
-        <img class="full-image full-image--flat" src="../images/snap-sitemap.png" alt="Snapp site map showing navigation between Introduction, Registration, Login, Home, Search, Categories, Deals, Cart, Profile, Orders and Wishlist">
+        <p>A full site map — from onboarding through search, categories, deals, cart, profile, orders and wishlist — kept every screen's navigation consistent once high-fidelity design started. Click a screen, or a linked row inside it, to trace where it leads.</p>
+        <div class="sitemap" id="sitemapCanvas">
+          <div class="sitemap__scroll">
+            <div class="sitemap__canvas">
+              <svg class="sitemap__edges" id="sitemapEdges"></svg>
+
+              <div class="sm-node" data-id="intro" style="left:800px;top:20px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Introduction</div>
+                <div class="sm-row sm-row--link" data-target="registration">Sign Up</div>
+                <div class="sm-row sm-row--link" data-target="login">Log In</div>
+                <div class="sm-row sm-row--plain">Home</div>
+              </div>
+
+              <div class="sm-node" data-id="registration" style="left:40px;top:200px;width:220px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Registration and Onboarding</div>
+                <div class="sm-row sm-row--plain">Home</div>
+                <div class="sm-row sm-row--plain">Log In</div>
+              </div>
+
+              <div class="sm-node" data-id="login" style="left:340px;top:200px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Login</div>
+                <div class="sm-row sm-row--link" data-target="home">Home</div>
+                <div class="sm-row sm-row--component">Registration And Onboarding</div>
+              </div>
+
+              <div class="sm-node sm-node--hub" data-id="home" style="left:800px;top:360px;width:220px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Home</div>
+                <div class="sm-row sm-row--link" data-target="searchOverlay">Search</div>
+                <div class="sm-row sm-row--link" data-target="shoppingInterests">Shopping Interests And Habits</div>
+                <div class="sm-row sm-row--link" data-target="categories">Categories</div>
+                <div class="sm-row sm-row--link" data-target="deals">Deals</div>
+                <div class="sm-row sm-row--component" data-target="wishlist">Wishlist</div>
+                <div class="sm-row sm-row--component" data-target="orders">Orders</div>
+                <div class="sm-row sm-row--component" data-target="profile">Profile</div>
+                <div class="sm-row sm-row--link" data-target="cart">Cart</div>
+                <div class="sm-row sm-row--auth">Log In Or Sign Up</div>
+              </div>
+
+              <div class="sm-node" data-id="searchOverlay" style="left:1100px;top:360px;width:190px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Search Overlay</div>
+                <div class="sm-row sm-row--link" data-target="searchResults">Input</div>
+                <div class="sm-row sm-row--component">Previous Searches</div>
+              </div>
+
+              <div class="sm-node" data-id="searchResults" style="left:1350px;top:360px;width:190px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Search Results</div>
+                <div class="sm-row sm-row--link">Search Input</div>
+                <div class="sm-row sm-row--link">Search Listing</div>
+              </div>
+
+              <div class="sm-node" data-id="shoppingInterests" style="left:0px;top:720px;width:220px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Shopping Interests + Habits</div>
+                <div class="sm-row sm-row--auth">Log In Or Sign Up</div>
+                <div class="sm-row sm-row--component">Discover New Products</div>
+                <div class="sm-row sm-row--component" data-target="profile">My Interests</div>
+                <div class="sm-row sm-row--component">Categories</div>
+                <div class="sm-row sm-row--component">Deals</div>
+              </div>
+
+              <div class="sm-node" data-id="categories" style="left:260px;top:720px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Categories</div>
+                <div class="sm-row sm-row--link">Trending Items</div>
+                <div class="sm-row sm-row--link">Most Popular Categories</div>
+                <div class="sm-row sm-row--link">All Categories</div>
+                <div class="sm-row sm-row--link">Deals</div>
+              </div>
+
+              <div class="sm-node" data-id="deals" style="left:500px;top:720px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Deals</div>
+                <div class="sm-row sm-row--link">Trending Deals</div>
+                <div class="sm-row sm-row--link">Deals Based Off Of Categories</div>
+                <div class="sm-row sm-row--component">Deals Just For You</div>
+              </div>
+
+              <div class="sm-node" data-id="cart" style="left:740px;top:720px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Cart</div>
+                <div class="sm-row sm-row--auth">Log In Or Sign Up</div>
+                <div class="sm-row sm-row--link">Items In Cart</div>
+                <div class="sm-row sm-row--link">Similar Items</div>
+              </div>
+
+              <div class="sm-node" data-id="profile" style="left:980px;top:720px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Profile</div>
+                <div class="sm-row sm-row--auth">Log In Or Sign Up</div>
+                <div class="sm-row sm-row--component">Account Settings</div>
+                <div class="sm-row sm-row--component">My Interests</div>
+                <div class="sm-row sm-row--component">Customer Service</div>
+                <div class="sm-row sm-row--component" data-target="orders">Orders</div>
+              </div>
+
+              <div class="sm-node" data-id="orders" style="left:1220px;top:720px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Orders</div>
+                <div class="sm-row sm-row--auth">Log In Or Sign Up</div>
+                <div class="sm-row sm-row--component">Search + Filter</div>
+                <div class="sm-row sm-row--component">In Progress Orders</div>
+                <div class="sm-row sm-row--component">Past Orders</div>
+                <div class="sm-row sm-row--component">Help Section</div>
+              </div>
+
+              <div class="sm-node" data-id="wishlist" style="left:1460px;top:720px;width:200px;">
+                <div class="sm-node__bar"><span></span><span></span><span></span></div>
+                <div class="sm-node__title">Wishlist</div>
+                <div class="sm-row sm-row--auth">Log In Or Sign Up</div>
+                <div class="sm-row sm-row--component">Your Saved Items</div>
+                <div class="sm-row sm-row--component">Sharing</div>
+                <div class="sm-row sm-row--component">Similar Items</div>
+              </div>
+
+            </div>
+          </div>
+          <p class="sitemap__hint">Drag to pan · click a highlighted row to trace its link</p>
+        </div>
       </div>
 
       <div class="flow__step">
@@ -380,7 +502,7 @@
   </section>
 </main>
 
-<script src="../script.js?v=1790720495_31836"></script>
+<script src="../script.js?v=1790721098_32398"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

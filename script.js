@@ -179,3 +179,128 @@ document.querySelectorAll('.logo-process').forEach(root => {
     circle.addEventListener('focus', () => circle.dispatchEvent(new Event('mouseenter')));
   });
 });
+
+// Interactive site map (Snapp): draws connector lines from each linked row to its
+// target screen, highlights the path on click, and supports drag-to-pan on the canvas
+const sitemapCanvas = document.getElementById('sitemapCanvas');
+if (sitemapCanvas) {
+  const scrollEl = sitemapCanvas.querySelector('.sitemap__scroll');
+  const canvasEl = sitemapCanvas.querySelector('.sitemap__canvas');
+  const svg = document.getElementById('sitemapEdges');
+  const rows = Array.from(canvasEl.querySelectorAll('.sm-row[data-target]'));
+  const nodes = {};
+  canvasEl.querySelectorAll('.sm-node').forEach(n => { nodes[n.dataset.id] = n; });
+
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const edges = [];
+
+  function rectIn(el) {
+    const r = el.getBoundingClientRect();
+    const c = canvasEl.getBoundingClientRect();
+    return { left: r.left - c.left, top: r.top - c.top, right: r.right - c.left, bottom: r.bottom - c.top, width: r.width, height: r.height };
+  }
+
+  // Right-angle-ish connector: exits the row's nearer side, enters the target's
+  // nearer side, curving through a midpoint so lines never cut straight through cards.
+  function routePath(rowRect, targetRect) {
+    const sourceCenterX = rowRect.left + rowRect.width / 2;
+    const targetCenterX = targetRect.left + targetRect.width / 2;
+    const goRight = targetCenterX >= sourceCenterX;
+    const sx = goRight ? rowRect.right : rowRect.left;
+    const sy = rowRect.top + rowRect.height / 2;
+    const targetBelow = targetRect.top > rowRect.bottom;
+    const targetAbove = targetRect.bottom < rowRect.top;
+    let tx, ty, d;
+    if (targetBelow || targetAbove) {
+      tx = targetRect.left + targetRect.width / 2;
+      ty = targetBelow ? targetRect.top : targetRect.bottom;
+      const midY = sy + (ty - sy) / 2;
+      d = `M ${sx} ${sy} C ${sx} ${midY}, ${tx} ${midY}, ${tx} ${ty}`;
+    } else {
+      tx = goRight ? targetRect.left : targetRect.right;
+      ty = targetRect.top + targetRect.height / 2;
+      const midX = sx + (tx - sx) / 2;
+      d = `M ${sx} ${sy} C ${midX} ${sy}, ${midX} ${ty}, ${tx} ${ty}`;
+    }
+    return { d, sx, sy };
+  }
+
+  function buildEdges() {
+    svg.innerHTML = '';
+    edges.length = 0;
+    rows.forEach(row => {
+      const targetNode = nodes[row.dataset.target];
+      if (!targetNode) return;
+      const path = document.createElementNS(SVG_NS, 'path');
+      svg.appendChild(path);
+      const dot = document.createElementNS(SVG_NS, 'circle');
+      dot.setAttribute('r', '3');
+      svg.appendChild(dot);
+      edges.push({ row, targetNode, path, dot });
+    });
+  }
+
+  function updatePaths() {
+    edges.forEach(({ row, targetNode, path, dot }) => {
+      const { d, sx, sy } = routePath(rectIn(row), rectIn(targetNode));
+      path.setAttribute('d', d);
+      dot.setAttribute('cx', sx);
+      dot.setAttribute('cy', sy);
+    });
+  }
+
+  buildEdges();
+  updatePaths();
+  window.addEventListener('resize', updatePaths);
+
+  function clearActive() {
+    edges.forEach(({ row, targetNode, path, dot }) => {
+      path.classList.remove('is-active');
+      dot.classList.remove('is-active');
+      row.classList.remove('is-active');
+      targetNode.classList.remove('is-active');
+    });
+    Object.values(nodes).forEach(n => n.classList.remove('is-active'));
+  }
+
+  rows.forEach(row => {
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('role', 'button');
+    row.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasActive = row.classList.contains('is-active');
+      clearActive();
+      if (wasActive) return;
+      const edge = edges.find(edg => edg.row === row);
+      if (!edge) return;
+      row.classList.add('is-active');
+      edge.path.classList.add('is-active');
+      edge.dot.classList.add('is-active');
+      const sourceNode = row.closest('.sm-node');
+      if (sourceNode) sourceNode.classList.add('is-active');
+      edge.targetNode.classList.add('is-active');
+      edge.targetNode.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+    });
+    row.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); row.click(); }
+    });
+  });
+
+  scrollEl.addEventListener('click', clearActive);
+
+  let isDown = false, startX = 0, startY = 0, startScrollLeft = 0, startScrollTop = 0;
+  scrollEl.addEventListener('mousedown', (e) => {
+    isDown = true;
+    scrollEl.classList.add('is-dragging');
+    startX = e.pageX;
+    startY = e.pageY;
+    startScrollLeft = scrollEl.scrollLeft;
+    startScrollTop = scrollEl.scrollTop;
+  });
+  window.addEventListener('mouseup', () => { isDown = false; scrollEl.classList.remove('is-dragging'); });
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    scrollEl.scrollLeft = startScrollLeft - (e.pageX - startX);
+    scrollEl.scrollTop = startScrollTop - (e.pageY - startY);
+  });
+}
