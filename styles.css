@@ -331,13 +331,11 @@ img.badge--photo{
   object-fit:cover;
 }
 .proj-card__thumb img,
-.proj-card__thumb video,
-.snapp-thumb{
+.proj-card__thumb video{
   transition:filter .4s ease;
 }
 .proj-card:hover .proj-card__thumb img,
-.proj-card:hover .proj-card__thumb video,
-.proj-card:hover .snapp-thumb{
+.proj-card:hover .proj-card__thumb video{
   filter:blur(6px) brightness(.65);
 }
 .proj-card__overlay{
@@ -358,49 +356,6 @@ img.badge--photo{
 }
 .proj-card:hover .proj-card__overlay{opacity:1;}
 
-/* Snapp thumbnail: original shop-app composite, rebuilt from its real layers so the two phone mockups can float */
-.proj-card__thumb--snapp{background:linear-gradient(160deg,#fdf1e3,#f6dcc0);}
-.snapp-thumb{position:relative;width:100%;height:100%;}
-.snapp-thumb__bg{
-  position:absolute;
-  top:-16%;
-  left:-20%;
-  width:62%;
-  transform:rotate(-10deg);
-  border-radius:16px;
-  box-shadow:0 14px 30px rgba(0,0,0,.16);
-  -webkit-mask-image:linear-gradient(to right, black 50%, transparent 92%);
-  mask-image:linear-gradient(to right, black 50%, transparent 92%);
-}
-.snapp-thumb__phone{
-  position:absolute;
-  width:34%;
-  max-width:150px;
-  filter:drop-shadow(0 14px 22px rgba(0,0,0,.22));
-}
-.snapp-thumb__phone--a{
-  left:32%;
-  top:12%;
-  z-index:2;
-  animation:snappPhoneUp 4.5s ease-in-out infinite;
-}
-.snapp-thumb__phone--b{
-  left:58%;
-  top:4%;
-  z-index:3;
-  animation:snappPhoneDown 4.5s ease-in-out infinite;
-}
-@keyframes snappPhoneUp{
-  0%,100%{transform:rotate(6deg) translateY(0);}
-  50%{transform:rotate(6deg) translateY(-14px);}
-}
-@keyframes snappPhoneDown{
-  0%,100%{transform:rotate(11deg) translateY(0);}
-  50%{transform:rotate(11deg) translateY(14px);}
-}
-@media (prefers-reduced-motion: reduce){
-  .snapp-thumb__phone{animation:none;}
-}
 .thumb--dashboard{background:linear-gradient(135deg,#14151a,#2b2f3a);}
 .thumb--ski{background:linear-gradient(135deg,#0d0d0d,#f2c14e 140%);}
 .thumb--tinyrocket{background:linear-gradient(160deg,#0f1f14,#274a30);}
