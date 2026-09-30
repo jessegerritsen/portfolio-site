@@ -166,18 +166,39 @@ function initCarousel(root) {
 }
 document.querySelectorAll('.carousel').forEach(initCarousel);
 
-// Interactive logo process (Tiny Rocket): hover a reference circle to swap its caption
+// Interactive logo process (Tiny Rocket): auto-cycles through the reference circles,
+// pausing on hover/focus so visitors can still pick one manually
 document.querySelectorAll('.logo-process').forEach(root => {
-  const circles = root.querySelectorAll('.logo-process__circle');
+  const circles = Array.from(root.querySelectorAll('.logo-process__circle'));
   const caption = root.querySelector('.logo-process__caption');
-  circles.forEach(circle => {
-    circle.addEventListener('mouseenter', () => {
-      circles.forEach(c => c.classList.remove('is-active'));
-      circle.classList.add('is-active');
-      if (caption) caption.textContent = circle.dataset.caption;
-    });
-    circle.addEventListener('focus', () => circle.dispatchEvent(new Event('mouseenter')));
+  if (!circles.length) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let index = Math.max(0, circles.findIndex(c => c.classList.contains('is-active')));
+  let timer = null;
+
+  const setActive = i => {
+    index = i;
+    circles.forEach(c => c.classList.remove('is-active'));
+    circles[index].classList.add('is-active');
+    if (caption) caption.textContent = circles[index].dataset.caption;
+  };
+  const start = () => {
+    if (reduceMotion || timer) return;
+    timer = setInterval(() => setActive((index + 1) % circles.length), 2600);
+  };
+  const stop = () => { clearInterval(timer); timer = null; };
+
+  circles.forEach((circle, i) => {
+    circle.addEventListener('mouseenter', () => { stop(); setActive(i); });
+    circle.addEventListener('focus', () => { stop(); setActive(i); });
   });
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusout', e => {
+    if (!root.contains(e.relatedTarget)) start();
+  });
+
+  setActive(index);
+  start();
 });
 
 // Interactive site map (Snapp): draws connector lines from each linked row to its
