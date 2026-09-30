@@ -1273,7 +1273,6 @@ img.badge--photo{
   margin-right:-20px;
   padding-left:20px;
   padding-right:20px;
-  scroll-snap-type:x proximity;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
   cursor:grab;
@@ -1293,7 +1292,7 @@ img.badge--photo{
   padding:32px 0;
   flex-shrink:0;
 }
-.phone-tile{position:relative;width:210px;flex-shrink:0;scroll-snap-align:start;}
+.phone-tile{position:relative;width:210px;flex-shrink:0;}
 .phone-tile__caption{
   text-align:center;
   font-size:.75rem;

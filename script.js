@@ -202,34 +202,43 @@ document.querySelectorAll('.logo-process').forEach(root => {
 });
 
 // Phone screen carousels: swipeable (touch/trackpad/mouse-drag) horizontal scroller
-// that also auto-advances one tile at a time, pausing while the visitor interacts
+// that also auto-scrolls continuously (like the old CSS marquee), pausing while the
+// visitor interacts. Scrolls by a tiny amount every frame instead of jumping a whole
+// tile on a timer, and wraps seamlessly using the duplicated tile set — this avoids
+// calling scrollTo(smooth) on an interval, which Safari can fight and stall on.
 function initPhoneMarquee(root) {
-  const tiles = Array.from(root.querySelectorAll('.phone-tile'));
-  if (tiles.length < 2) return;
+  const track = root.querySelector('.phone-marquee__track');
+  const sets = track ? Array.from(track.querySelectorAll(':scope > .phone-tiles')) : [];
+  if (sets.length < 2) return;
+  const setWidth = sets[0].getBoundingClientRect().width;
+  if (!setWidth) return;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let timer = null;
+  const speed = setWidth / 38; // px/sec — matches the original 38s-per-cycle pace
+
+  let rafId = null;
+  let lastTime = null;
+  let paused = false;
   let resumeTimer = null;
 
-  function tileAdvance() {
-    const gap = parseFloat(getComputedStyle(tiles[0].parentElement).gap) || 0;
-    return tiles[0].getBoundingClientRect().width + gap;
-  }
-  function step() {
-    const atEnd = root.scrollLeft + root.clientWidth >= root.scrollWidth - 4;
-    root.scrollTo({ left: atEnd ? 0 : root.scrollLeft + tileAdvance(), behavior: 'smooth' });
+  function frame(time) {
+    if (lastTime === null) lastTime = time;
+    const dt = (time - lastTime) / 1000;
+    lastTime = time;
+    if (!paused) {
+      root.scrollLeft += speed * dt;
+      if (root.scrollLeft >= setWidth) root.scrollLeft -= setWidth;
+    }
+    rafId = requestAnimationFrame(frame);
   }
   function start() {
-    if (reduceMotion || timer) return;
-    timer = setInterval(step, 2800);
-  }
-  function stop() {
-    clearInterval(timer);
-    timer = null;
+    if (reduceMotion || rafId) return;
+    lastTime = null;
+    rafId = requestAnimationFrame(frame);
   }
   function deferResume() {
-    stop();
+    paused = true;
     clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(start, 3500);
+    resumeTimer = setTimeout(() => { paused = false; }, 3000);
   }
 
   root.addEventListener('touchstart', deferResume, { passive: true });
