@@ -468,11 +468,15 @@ if (zoomableImages.length) {
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 }
 
-// Custom cursor: a small red dot that tracks the mouse. Skipped on touch devices,
-// which have no real cursor to replace.
+// Custom cursor: a small red dot that tracks the mouse, growing into a "View" label
+// over project cards. Skipped on touch devices, which have no real cursor to replace.
 if (window.matchMedia('(pointer: fine)').matches) {
   const cursorDot = document.createElement('div');
   cursorDot.className = 'cursor-dot';
+  const cursorLabel = document.createElement('span');
+  cursorLabel.className = 'cursor-dot__label';
+  cursorLabel.textContent = 'View';
+  cursorDot.appendChild(cursorLabel);
   document.body.appendChild(cursorDot);
   window.addEventListener('mousemove', e => {
     cursorDot.style.left = e.clientX + 'px';
@@ -480,4 +484,9 @@ if (window.matchMedia('(pointer: fine)').matches) {
     cursorDot.classList.add('is-active');
   }, { passive: true });
   document.addEventListener('mouseleave', () => cursorDot.classList.remove('is-active'));
+
+  document.querySelectorAll('.proj-card').forEach(card => {
+    card.addEventListener('mouseenter', () => cursorDot.classList.add('is-hover'));
+    card.addEventListener('mouseleave', () => cursorDot.classList.remove('is-hover'));
+  });
 }

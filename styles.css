@@ -1780,7 +1780,8 @@ img.badge--photo{
   .logo-process__result{width:60px;height:60px;}
 }
 
-/* Custom cursor: small red dot that tracks the mouse (desktop only, see script.js) */
+/* Custom cursor: small red dot that tracks the mouse (desktop only, see script.js),
+   growing into a "View" label when hovering a project card */
 .cursor-dot{
   position:fixed;
   top:0;
@@ -1791,8 +1792,22 @@ img.badge--photo{
   background:#e63946;
   pointer-events:none;
   z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   transform:translate(-50%,-50%);
   opacity:0;
-  transition:opacity .2s ease, transform .08s ease-out;
+  transition:opacity .2s ease, transform .08s ease-out, width .25s ease, height .25s ease;
 }
 .cursor-dot.is-active{opacity:1;}
+.cursor-dot.is-hover{width:64px;height:64px;}
+.cursor-dot__label{
+  opacity:0;
+  color:#fff;
+  font-family:'Quicksand',sans-serif;
+  font-weight:600;
+  font-size:.75rem;
+  letter-spacing:.02em;
+  transition:opacity .15s ease;
+}
+.cursor-dot.is-hover .cursor-dot__label{opacity:1;}
