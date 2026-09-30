@@ -184,7 +184,7 @@ document.querySelectorAll('.logo-process').forEach(root => {
   };
   const start = () => {
     if (reduceMotion || timer) return;
-    timer = setInterval(() => setActive((index + 1) % circles.length), 2600);
+    timer = setInterval(() => setActive((index + 1) % circles.length), 1500);
   };
   const stop = () => { clearInterval(timer); timer = null; };
 
