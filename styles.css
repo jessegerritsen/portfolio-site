@@ -1355,6 +1355,15 @@ img.badge--photo{
   .phone-tiles--static{flex-wrap:wrap;justify-content:center;row-gap:36px;}
 }
 
+/* Full-bleed showcase slides: edge-to-edge, escaping main's side padding */
+.full-bleed-slide{
+  display:block;
+  width:calc(100% + 40px);
+  max-width:none;
+  margin:24px -20px;
+}
+.full-bleed-slide:first-child{margin-top:0;}
+
 /* Interactive site map: recreated from Figma components instead of a flat image */
 .sitemap{margin-top:24px;margin-left:-20px;margin-right:-20px;position:relative;}
 .sitemap__scroll{
