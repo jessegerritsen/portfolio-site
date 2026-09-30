@@ -1240,6 +1240,30 @@ img.badge--photo{
   .two-photo{grid-template-columns:1fr;}
 }
 
+/* Side-by-side sketches of very different aspect ratios (portrait phone + wide
+   process diagram): match their heights instead of forcing equal-width columns,
+   so neither gets stretched or squeezed illegible */
+.sketch-pair{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  margin-top:20px;
+}
+.sketch-pair .full-image{
+  width:auto;
+  height:340px;
+  max-width:100%;
+  margin:0;
+}
+@media (max-width:820px){
+  .sketch-pair .full-image{height:260px;}
+}
+@media (max-width:640px){
+  .sketch-pair{flex-direction:column;}
+  .sketch-pair .full-image{width:100%;height:auto;max-width:320px;}
+}
+
 /* iPhone mockup */
 .phone-marquee{
   overflow:hidden;
