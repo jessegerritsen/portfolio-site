@@ -1779,3 +1779,20 @@ img.badge--photo{
   .logo-process__arrow{width:20px;}
   .logo-process__result{width:60px;height:60px;}
 }
+
+/* Custom cursor: small red dot that tracks the mouse (desktop only, see script.js) */
+.cursor-dot{
+  position:fixed;
+  top:0;
+  left:0;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#e63946;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  opacity:0;
+  transition:opacity .2s ease, transform .08s ease-out;
+}
+.cursor-dot.is-active{opacity:1;}

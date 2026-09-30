@@ -467,3 +467,17 @@ if (zoomableImages.length) {
   lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) closeLightbox(); });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 }
+
+// Custom cursor: a small red dot that tracks the mouse. Skipped on touch devices,
+// which have no real cursor to replace.
+if (window.matchMedia('(pointer: fine)').matches) {
+  const cursorDot = document.createElement('div');
+  cursorDot.className = 'cursor-dot';
+  document.body.appendChild(cursorDot);
+  window.addEventListener('mousemove', e => {
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
+    cursorDot.classList.add('is-active');
+  }, { passive: true });
+  document.addEventListener('mouseleave', () => cursorDot.classList.remove('is-active'));
+}
