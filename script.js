@@ -233,9 +233,12 @@ function initPhoneMarquee(root) {
   }
 
   root.addEventListener('touchstart', deferResume, { passive: true });
-  root.addEventListener('wheel', deferResume, { passive: true });
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
+  // Only a genuinely horizontal wheel/trackpad gesture counts as interaction —
+  // vertical page-scroll also fires 'wheel' whenever the cursor happens to be
+  // over the carousel, which isn't the visitor trying to control it
+  root.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) deferResume();
+  }, { passive: true });
 
   // Click-and-drag scrolling for mouse/trackpad users (native scroll already
   // handles touch swipe and two-finger trackpad gestures on its own)
