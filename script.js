@@ -201,6 +201,64 @@ document.querySelectorAll('.logo-process').forEach(root => {
   start();
 });
 
+// Phone screen carousels: swipeable (touch/trackpad/mouse-drag) horizontal scroller
+// that also auto-advances one tile at a time, pausing while the visitor interacts
+function initPhoneMarquee(root) {
+  const tiles = Array.from(root.querySelectorAll('.phone-tile'));
+  if (tiles.length < 2) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = null;
+  let resumeTimer = null;
+
+  function tileAdvance() {
+    const gap = parseFloat(getComputedStyle(tiles[0].parentElement).gap) || 0;
+    return tiles[0].getBoundingClientRect().width + gap;
+  }
+  function step() {
+    const atEnd = root.scrollLeft + root.clientWidth >= root.scrollWidth - 4;
+    root.scrollTo({ left: atEnd ? 0 : root.scrollLeft + tileAdvance(), behavior: 'smooth' });
+  }
+  function start() {
+    if (reduceMotion || timer) return;
+    timer = setInterval(step, 2800);
+  }
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+  }
+  function deferResume() {
+    stop();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(start, 3500);
+  }
+
+  root.addEventListener('touchstart', deferResume, { passive: true });
+  root.addEventListener('wheel', deferResume, { passive: true });
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  // Click-and-drag scrolling for mouse/trackpad users (native scroll already
+  // handles touch swipe and two-finger trackpad gestures on its own)
+  let isDragging = false;
+  let dragStartX = 0;
+  let scrollStartLeft = 0;
+  root.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'touch') return;
+    isDragging = true;
+    dragStartX = e.clientX;
+    scrollStartLeft = root.scrollLeft;
+    deferResume();
+  });
+  window.addEventListener('pointermove', e => {
+    if (!isDragging) return;
+    root.scrollLeft = scrollStartLeft - (e.clientX - dragStartX);
+  });
+  window.addEventListener('pointerup', () => { isDragging = false; });
+
+  start();
+}
+document.querySelectorAll('.phone-marquee').forEach(initPhoneMarquee);
+
 // Interactive site map (Snapp): draws connector lines from each linked row to its
 // target screen, highlights the path on click, and supports drag-to-pan on the canvas
 const sitemapCanvas = document.getElementById('sitemapCanvas');

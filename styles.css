@@ -1266,25 +1266,25 @@ img.badge--photo{
 
 /* iPhone mockup */
 .phone-marquee{
-  overflow:hidden;
+  overflow-x:auto;
+  overflow-y:hidden;
   margin-top:48px;
   margin-left:-20px;
   margin-right:-20px;
+  padding-left:20px;
+  padding-right:20px;
+  scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  cursor:grab;
   -webkit-mask-image:linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
   mask-image:linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
 }
+.phone-marquee::-webkit-scrollbar{display:none;}
+.phone-marquee:active{cursor:grabbing;}
 .phone-marquee__track{
   display:flex;
   width:max-content;
-  animation:phoneMarquee 38s linear infinite;
-}
-.phone-marquee:hover .phone-marquee__track{animation-play-state:paused;}
-@keyframes phoneMarquee{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-@media (prefers-reduced-motion: reduce){
-  .phone-marquee__track{animation:none;}
 }
 .phone-tiles{
   display:flex;
@@ -1293,7 +1293,7 @@ img.badge--photo{
   padding:32px 0;
   flex-shrink:0;
 }
-.phone-tile{position:relative;width:210px;flex-shrink:0;}
+.phone-tile{position:relative;width:210px;flex-shrink:0;scroll-snap-align:start;}
 .phone-tile__caption{
   text-align:center;
   font-size:.75rem;
