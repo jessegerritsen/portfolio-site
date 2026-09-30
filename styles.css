@@ -316,7 +316,7 @@ img.badge--photo{
   box-shadow:0 18px 40px rgba(0,0,0,.1);
 }
 .proj-card__thumb{
-  height:200px;
+  height:280px;
   border-radius:var(--radius-md);
   position:relative;
   overflow:hidden;
@@ -329,6 +329,43 @@ img.badge--photo{
   width:100%;
   height:100%;
   object-fit:cover;
+}
+
+/* Snapp thumbnail: two real screens in phone mockups, floating in opposite directions */
+.proj-card__thumb--snapp{background:linear-gradient(160deg,#fdf1e3,#f6dcc0);}
+.proj-card__phones{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  width:100%;
+}
+.proj-card__phones .iphone{
+  width:40%;
+  max-width:160px;
+  margin:0;
+  flex-shrink:0;
+}
+.proj-card__phones .iphone:nth-child(1){
+  margin-right:-24px;
+  z-index:1;
+  animation:phoneFloatA 4.5s ease-in-out infinite;
+}
+.proj-card__phones .iphone:nth-child(2){
+  margin-left:-24px;
+  z-index:2;
+  animation:phoneFloatB 4.5s ease-in-out infinite;
+}
+@keyframes phoneFloatA{
+  0%,100%{transform:rotate(-6deg) translateY(0);}
+  50%{transform:rotate(-6deg) translateY(-14px);}
+}
+@keyframes phoneFloatB{
+  0%,100%{transform:rotate(6deg) translateY(0);}
+  50%{transform:rotate(6deg) translateY(14px);}
+}
+@media (prefers-reduced-motion: reduce){
+  .proj-card__phones .iphone{animation:none;}
 }
 .thumb--dashboard{background:linear-gradient(135deg,#14151a,#2b2f3a);}
 .thumb--ski{background:linear-gradient(135deg,#0d0d0d,#f2c14e 140%);}
