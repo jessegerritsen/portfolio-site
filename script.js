@@ -72,17 +72,17 @@ if (introEl && dropEl) {
     try { localStorage.setItem('introSeen', '1'); } catch (e) {}
     document.documentElement.style.overflow = 'hidden';
     requestAnimationFrame(() => introEl.classList.add('is-text-visible'));
-    setTimeout(() => introEl.classList.remove('is-text-visible'), 2400);
-    setTimeout(() => dropEl.classList.add('is-covering'), 2800); // slow, 1.6s grow
+    setTimeout(() => introEl.classList.remove('is-text-visible'), 260);
+    setTimeout(() => dropEl.classList.add('is-covering'), 300); // fast, .4s grow
     // Restore scrolling before measuring/settling into the target, so the
     // scrollbar's width is already accounted for and the handoff can't jump.
-    setTimeout(() => { document.documentElement.style.overflow = ''; }, 4350);
+    setTimeout(() => { document.documentElement.style.overflow = ''; }, 700);
     setTimeout(() => {
       introEl.classList.add('is-hidden'); // page fades in
       dropEl.classList.add('is-behind'); // drop tucks behind hero content right as it appears
-    }, 4400);
-    setTimeout(settleDropIntoHero, 4400); // same drop shrinks into the hero blob's spot
-    setTimeout(revealHeroBlob, 5500);
+    }, 720);
+    setTimeout(settleDropIntoHero, 720); // same drop shrinks into the hero blob's spot
+    setTimeout(revealHeroBlob, 950);
   }
 } else if (heroBlobEl) {
   heroBlobEl.classList.add('is-visible');
@@ -484,7 +484,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
   cursorDot.className = 'cursor-dot';
   const cursorLabel = document.createElement('span');
   cursorLabel.className = 'cursor-dot__label';
-  cursorLabel.textContent = 'View';
+  cursorLabel.textContent = 'View →';
   cursorDot.appendChild(cursorLabel);
   document.body.appendChild(cursorDot);
   window.addEventListener('mousemove', e => {
@@ -494,8 +494,52 @@ if (window.matchMedia('(pointer: fine)').matches) {
   }, { passive: true });
   document.addEventListener('mouseleave', () => cursorDot.classList.remove('is-active'));
 
-  document.querySelectorAll('.proj-card').forEach(card => {
+  document.querySelectorAll('.project-panel').forEach(card => {
     card.addEventListener('mouseenter', () => cursorDot.classList.add('is-hover'));
     card.addEventListener('mouseleave', () => cursorDot.classList.remove('is-hover'));
   });
 }
+
+// Smooth scrolling (Lenis, only loaded on pages that include it) and scroll-linked
+// parallax on featured project images. Both skipped under prefers-reduced-motion.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+  function updateParallax() {
+    const vh = window.innerHeight;
+    parallaxEls.forEach(el => {
+      const rect = el.parentElement.getBoundingClientRect();
+      const progress = (vh - rect.top) / (vh + rect.height);
+      el.style.transform = `translateY(${(progress - 0.5) * rect.height * 0.18}px)`;
+    });
+  }
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    function raf(time) {
+      lenis.raf(time);
+      if (parallaxEls.length) updateParallax();
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  } else if (parallaxEls.length) {
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+  }
+}
+
+// Word-by-word headline reveal, triggered 10-15% into view — same threshold as
+// the general .reveal fade, so there's never an empty screen while scrolling.
+document.querySelectorAll('[data-reveal-words]').forEach(el => {
+  const words = el.textContent.trim().split(/\s+/);
+  el.innerHTML = words.map((w, i) =>
+    `<span class="reveal-word"><span style="transition-delay:${i * 35}ms">${w}</span></span>`
+  ).join(' ');
+});
+const wordObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-revealed');
+      wordObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.observe(el));
