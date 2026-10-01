@@ -120,11 +120,20 @@ const sections = navLinks.map(link => document.querySelector(link.getAttribute('
 
 function setActiveLink() {
   if (!sections.length) return;
-  const pos = window.scrollY + window.innerHeight / 3;
-  let current = sections[0];
-  sections.forEach(sec => {
-    if (sec && sec.offsetTop <= pos) current = sec;
-  });
+  // At the bottom of the page there's no scroll room left to reach the last
+  // section's normal threshold (nothing below it to scroll past), so treat
+  // "scrolled to the end" as a special case rather than leaving it unreachable.
+  const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+  let current;
+  if (atBottom) {
+    current = sections[sections.length - 1];
+  } else {
+    const pos = window.scrollY + window.innerHeight / 3;
+    current = sections[0];
+    sections.forEach(sec => {
+      if (sec && sec.offsetTop <= pos) current = sec;
+    });
+  }
   navLinks.forEach(link => {
     link.classList.toggle('is-active', link.getAttribute('href') === '#' + current.id);
   });
