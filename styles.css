@@ -1997,3 +1997,9 @@ img.badge--photo{
 @media (max-width:370px){
   .topnav__link{padding:9px 8px;font-size:.74rem}
 }
+
+/* Tiny Rocket: show the whole video frame instead of a cropped, zoomed-in slice */
+@media (min-width:701px){
+  .project-panel__media--video{height:auto;aspect-ratio:1280/776}
+  .project-panel__media--video .project-panel__parallax{height:100%;margin-top:0}
+}
