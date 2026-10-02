@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maede Khademi — Digital Designer</title>
-<meta name="description" content="Portfolio of Maede Khademi, Digital Designer based in the Netherlands.">
+<title>Maede Khademi — Industrial Designer</title>
+<meta name="description" content="Portfolio of Maede Khademi, Industrial Designer based in the Netherlands.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1790962677_7536">
+<link rel="stylesheet" href="styles.css?v=1790962999_7721">
 </head>
 <body>
 
@@ -50,8 +50,8 @@
         <span class="dark">I'm</span> <span class="gray">Maede,</span>
         <img class="badge badge--photo" src="images/maede-portrait.png" alt="Maede">
         <br>
-        <span class="gray">a Digital</span>
-        <img class="badge badge--photo" src="images/industrial-badge.png" alt="Design sketches">
+        <span class="gray">an Industrial</span>
+        <img class="badge badge--photo" src="images/industrial-badge.png" alt="Industrial design sketches">
         <span class="dark">Designer</span>
         <br>
         <span class="dark">Based in</span> <span class="gray">the Netherlands</span>
@@ -252,6 +252,7 @@
       <a class="project-panel reveal" href="projects/komtai/">
         <span class="project-panel__index">04</span>
         <div class="project-panel__media">
+          <canvas class="komtai-live" aria-hidden="true"></canvas>
           <div class="project-panel__parallax" data-parallax>
             <img class="project-panel__img project-panel__img--contain" src="images/komtai-3d-exploded.png" alt="3D exploded view of the Komtai oven toaster" width="1600" height="810">
           </div>
@@ -394,32 +395,6 @@
     </div>
   </section>
 
-  <!-- SOLIDWORKS CAROUSEL -->
-  <section id="solidworks" class="section">
-    <h2 class="section__title reveal">Some <span class="gray">SolidWorks</span> models</h2>
-    <div class="carousel reveal" id="swCarousel">
-      <div class="carousel__track">
-        <div class="carousel__slide sw-slide" data-label="Ratchet toolset">
-          <div class="sw-slide__art"><img src="images/solidworks-toolset.jpg" alt="SolidWorks ratchet toolset, exploded assembly"></div>
-          <div class="sw-slide__caption">Ratchet toolset</div>
-        </div>
-        <div class="carousel__slide sw-slide" data-label="Playground structure">
-          <div class="sw-slide__art"><img src="images/solidworks-playground.jpg" alt="SolidWorks playground structure render"></div>
-          <div class="sw-slide__caption">Playground structure</div>
-        </div>
-        <div class="carousel__slide sw-slide" data-label="NemoTech smart planter">
-          <div class="sw-slide__art"><img src="images/solidworks-nemotech.jpg" alt="SolidWorks NemoTech smart planter render"></div>
-          <div class="sw-slide__caption">NemoTech smart planter</div>
-        </div>
-      </div>
-      <div class="carousel__nav">
-        <button class="carousel__btn" data-dir="-1" aria-label="Previous">‹</button>
-        <span class="carousel__label">Ratchet toolset</span>
-        <button class="carousel__btn" data-dir="1" aria-label="Next">›</button>
-      </div>
-    </div>
-  </section>
-
   <!-- EXPERIENCES -->
   <section id="experiences" class="section">
     <h2 class="section__title reveal">Experiences</h2>
@@ -496,6 +471,7 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
-<script src="script.js?v=1790962677_7536"></script>
+<script src="komtai-thumb.js?v=2" defer></script>
+<script src="script.js?v=1790962999_7721"></script>
 </body>
 </html>

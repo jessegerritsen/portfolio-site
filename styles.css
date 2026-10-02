@@ -1958,3 +1958,9 @@ img.badge--photo{
 .komtai-pair--tall img{aspect-ratio:4/5}
 .komtai-pair img,.komtai-img{height:auto}
 @media (max-width:700px){.project-panel__media{height:500px}.project-panel__img--contain{padding:6% 8% 50%}}
+
+/* Komtai thumbnail: live 3D that explodes with scroll (poster image is the fallback) */
+.komtai-live{position:absolute;left:0;top:0;width:100%;height:calc(100% - 92px);pointer-events:none;opacity:0;transition:opacity .5s ease;background:#fff;z-index:1;display:block}
+.project-panel__media.is-live .komtai-live{opacity:1}
+.project-panel__media.is-live .project-panel__parallax{opacity:0;transition:opacity .5s ease}
+@media (max-width:700px){.komtai-live{height:calc(100% - 215px)}}

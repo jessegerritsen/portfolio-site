@@ -475,6 +475,7 @@
         if (camName) api.view(camName);
       },
       setExplode: function (v) { tar.explode = v; },
+      drive: function (e, az, el) { tar.explode = e; tar.az = az; tar.el = el; tar.door = 0; tar.flow = 0; tar.shell = 1; },
       rotateBy: function (dx, dy) {
         tar.az += dx; tar.el = Math.max(-0.05, Math.min(1.35, tar.el + dy));
       },
