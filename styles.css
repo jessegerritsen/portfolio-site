@@ -1986,3 +1986,14 @@ img.badge--photo{
 
 /* more air between the Experiences intro and its cards */
 #experiences .lead-text{margin-bottom:clamp(40px,6vw,72px)}
+
+/* Top menu stays inside the screen on phones */
+@media (max-width:560px){
+  .topnav{padding:10px 12px}
+  .topnav__pill{padding:5px;gap:0;max-width:100%;box-sizing:border-box;overflow-x:auto;scrollbar-width:none}
+  .topnav__pill::-webkit-scrollbar{display:none}
+  .topnav__link{padding:9px 12px;font-size:.78rem;white-space:nowrap;flex:0 0 auto}
+}
+@media (max-width:370px){
+  .topnav__link{padding:9px 8px;font-size:.74rem}
+}
