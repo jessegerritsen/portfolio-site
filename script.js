@@ -632,9 +632,12 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
     v('--d', R(p, .46, .6));
     v('--c', ease(R(p, .64, .75)));
     v('--f', ease(R(p, .8, .93)));
-    v('--t', ease(R(p, .9, .95)));
-    v('--h', ease(R(p, .93, .97)));
-    v('--m', ease(R(p, .95, .99)));
+    v('--t', ease(R(p, .88, .93)));
+    v('--h', ease(R(p, .91, .95)));
+    v('--m1', ease(R(p, .93, .96)));
+    v('--m2', ease(R(p, .95, .975)));
+    v('--m3', ease(R(p, .965, .99)));
+    v('--m4', ease(R(p, .98, 1)));
     sec.classList.toggle('is-end', p > .99);
     const st = p < .2 ? 0 : p < .43 ? 1 : p < .62 ? 2 : p < .78 ? 3 : 4;
     steps.forEach((s, i) => s.classList.toggle('on', i === st));
