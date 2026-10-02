@@ -1983,3 +1983,6 @@ img.badge--photo{
 /* percentage padding resolves against the wide container, so size the screen inset from the phone itself */
 .pbs-phone.iphone{padding:0}
 .pbs-phone .iphone__screen{position:absolute;inset:1.5% 3.2%;width:auto;height:auto}
+
+/* more air between the Experiences intro and its cards */
+#experiences .lead-text{margin-bottom:clamp(40px,6vw,72px)}
