@@ -2048,3 +2048,13 @@ img.badge--photo{
   .project-panel__media--video .project-panel__img{object-position:center center}
   .project-panel__media--video > .project-panel__info{position:relative;background:#fff}
 }
+
+/* AI in my workflow */
+.ai-tools{justify-content:center;margin:26px auto 0}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:var(--max);margin:30px auto 0}
+.ai-card{position:relative;padding:22px;background:var(--card-alt);box-shadow:var(--shadow)}
+.ai-card__num{display:block;font-family:'Quicksand',sans-serif;font-weight:700;font-size:2rem;line-height:1;letter-spacing:-.03em;color:#7c5cff;margin-bottom:12px}
+.ai-card:nth-child(2) .ai-card__num{color:#14b8a6}
+.ai-card:nth-child(3) .ai-card__num{color:#f47a3c}
+.ai-card p{font-size:.88rem}
+@media (max-width:760px){.ai-grid{grid-template-columns:1fr}}
