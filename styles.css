@@ -1964,3 +1964,19 @@ img.badge--photo{
 .project-panel__media.is-live .komtai-live{opacity:1}
 .project-panel__media.is-live .project-panel__parallax{opacity:0;transition:opacity .5s ease}
 @media (max-width:700px){.komtai-live{height:calc(100% - 215px)}}
+
+/* Plant B thumbnail: title, then the app screens arrive one by one as you scroll */
+.pbs{--h:0;--m1:0;--m2:0;--m3:0;--m4:0;position:relative;height:300vh}
+.pbs-pin{position:sticky;top:96px;height:clamp(540px,calc(100vh - 120px),760px);display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden;border-radius:var(--radius-lg);background:var(--card);box-shadow:var(--shadow)}
+.pbs-stage{position:relative;flex:1;min-height:0;overflow:hidden;text-align:center;background:radial-gradient(ellipse 80% 65% at 50% 100%,#cfeccb 0%,#f3faf1 100%)}
+.pbs-title{position:absolute;left:0;right:0;top:clamp(8px,2vw,24px);font-family:'Quicksand',sans-serif;font-weight:700;font-size:clamp(72px,13vw,160px);line-height:.9;letter-spacing:-.05em;color:var(--ink);margin:0;opacity:var(--h);transform:translateY(calc((1 - var(--h))*32px))}
+.pbs-sub{position:absolute;left:0;right:0;top:clamp(86px,15.6vw,192px);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0;opacity:var(--h)}
+.pbs-phones{position:absolute;inset:0}
+.pbs-phone.iphone{position:absolute;bottom:-9%;width:auto;max-width:none;height:62%;margin:0;left:var(--x);translate:-50% calc((1 - var(--p))*80px);opacity:var(--p);rotate:var(--r);box-shadow:0 22px 40px -14px rgba(30,70,30,.4),inset 0 0 0 1.5px rgba(255,255,255,.08);transition:scale .4s cubic-bezier(.2,.7,.3,1)}
+.pbs-phone.iphone:hover{scale:1.035}
+.pbs-p1{--p:var(--m1);--x:18%;--r:-5deg;z-index:1;height:54%}
+.pbs-p2{--p:var(--m2);--x:39%;--r:-2deg;z-index:2}
+.pbs-p3{--p:var(--m3);--x:61%;--r:2deg;z-index:3}
+.pbs-p4{--p:var(--m4);--x:82%;--r:5deg;z-index:1;height:54%}
+@media (max-width:700px){.pbs-phone.iphone{height:60%;bottom:-12%}.pbs-p1,.pbs-p4{height:50%}.pbs-p1{--x:15%}.pbs-p4{--x:85%}.pbs-p2{--x:37%}.pbs-p3{--x:63%}}
+@media (prefers-reduced-motion:reduce){.pbs-phone.iphone{transition:none}}

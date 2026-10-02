@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1790963199_7906">
+<link rel="stylesheet" href="styles.css?v=1790963335_8122">
 </head>
 <body>
 
@@ -229,25 +229,34 @@
         </div>
       </a>
 
-      <a class="project-panel reveal" href="projects/plant-b/">
+      <div class="project-panel project-panel--live">
         <span class="project-panel__index">03</span>
-        <div class="project-panel__media">
-          <div class="project-panel__parallax" data-parallax>
-            <img class="project-panel__img" src="images/proj-thesis.png" alt="PLANT B mindfulness app screens">
-          </div>
-          <div class="project-panel__info">
-            <div class="project-panel__text">
-              <h3 class="project-panel__title" data-reveal-words>Plant B: a mindfulness app for hospitalized patients</h3>
-              <p class="project-panel__desc">A thesis app that nudges hospitalized patients to keep moving, with a virtual garden as the reward.</p>
+        <section class="pbs" id="pbs" aria-label="Plant B app screens, arriving as you scroll">
+          <div class="pbs-pin">
+            <div class="pbs-stage">
+              <h3 class="pbs-title">Plant B</h3>
+              <p class="pbs-sub">Grow your virtual garden.</p>
+              <div class="pbs-phones">
+                <div class="iphone pbs-phone pbs-p1"><div class="iphone__screen"><img src="images/screens/pb-scr-activities.png" alt="Plant B activities screen with My Walks and My Sits cards" loading="lazy"></div><div class="iphone__notch"></div></div>
+                <div class="iphone pbs-phone pbs-p2"><div class="iphone__screen"><img src="images/screens/pb-scr-dashboard.png" alt="Plant B Good Morning dashboard" loading="lazy"></div><div class="iphone__notch"></div></div>
+                <div class="iphone pbs-phone pbs-p3"><div class="iphone__screen"><img src="images/screens/pb-scr-onboarding-garden.png" alt="Plant B onboarding: grow your virtual garden" loading="lazy"></div><div class="iphone__notch"></div></div>
+                <div class="iphone pbs-phone pbs-p4"><div class="iphone__screen"><img src="images/screens/pb-scr-tracking.png" alt="Plant B tracking screen with a growing virtual plant" loading="lazy"></div><div class="iphone__notch"></div></div>
+              </div>
             </div>
-            <div class="project-panel__meta">
-              <span class="proj-card__kind">Bachelor thesis</span>
-              <span class="tag">Research</span>
-              <span class="tag">Product development</span>
-            </div>
+            <a class="project-panel__info" href="projects/plant-b/">
+              <div class="project-panel__text">
+                <h3 class="project-panel__title" data-reveal-words>Plant B: a mindfulness app for hospitalized patients</h3>
+                <p class="project-panel__desc">A thesis app that nudges hospitalized patients to keep moving, with a virtual garden as the reward.</p>
+              </div>
+              <div class="project-panel__meta">
+                <span class="proj-card__kind">Bachelor thesis</span>
+                <span class="tag">Research</span>
+                <span class="tag">Product development</span>
+              </div>
+            </a>
           </div>
-        </div>
-      </a>
+        </section>
+      </div>
 
       <a class="project-panel reveal" href="projects/komtai/">
         <span class="project-panel__index">04</span>
@@ -413,6 +422,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 <script src="komtai-thumb.js?v=2" defer></script>
-<script src="script.js?v=1790963199_7906"></script>
+<script src="script.js?v=1790963335_8122"></script>
 </body>
 </html>

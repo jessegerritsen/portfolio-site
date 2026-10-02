@@ -656,3 +656,30 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
     scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
   }));
 })();
+
+/* Plant B thumbnail: pinned, the title comes up and the phones arrive one by one */
+(function () {
+  const sec = document.getElementById('pbs');
+  if (!sec) return;
+  const pin = sec.querySelector('.pbs-pin');
+  const R = (x, a, b) => Math.max(0, Math.min(1, (x - a) / (b - a)));
+  const ease = x => x * x * (3 - 2 * x);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+  function paint() {
+    ticking = false;
+    const top = parseFloat(getComputedStyle(pin).top) || 0;
+    const span = sec.offsetHeight - pin.offsetHeight;
+    const p = reduce ? 1 : R(top - sec.getBoundingClientRect().top, 0, span);
+    const set = (k, v) => sec.style.setProperty(k, v.toFixed(4));
+    set('--h', ease(R(p, 0.0, 0.12)));
+    set('--m1', ease(R(p, 0.14, 0.34)));
+    set('--m2', ease(R(p, 0.30, 0.50)));
+    set('--m3', ease(R(p, 0.46, 0.66)));
+    set('--m4', ease(R(p, 0.62, 0.82)));
+  }
+  function req() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  addEventListener('scroll', req, { passive: true });
+  addEventListener('resize', req);
+  paint();
+})();
