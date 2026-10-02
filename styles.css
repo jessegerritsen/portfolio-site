@@ -1980,3 +1980,6 @@ img.badge--photo{
 .pbs-p4{--p:var(--m4);--x:82%;--r:5deg;z-index:1;height:54%}
 @media (max-width:700px){.pbs-phone.iphone{height:60%;bottom:-12%}.pbs-p1,.pbs-p4{height:50%}.pbs-p1{--x:15%}.pbs-p4{--x:85%}.pbs-p2{--x:37%}.pbs-p3{--x:63%}}
 @media (prefers-reduced-motion:reduce){.pbs-phone.iphone{transition:none}}
+/* percentage padding resolves against the wide container, so size the screen inset from the phone itself */
+.pbs-phone.iphone{padding:0}
+.pbs-phone .iphone__screen{position:absolute;inset:1.5% 3.2%;width:auto;height:auto}
