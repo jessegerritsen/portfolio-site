@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Komtai — Maede Khademi</title>
+<meta name="description" content="Komtai: a classic-style convection oven toaster, a product design project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=1790952641_5688">
+</head>
+<body>
+
+<a class="floating-mail" href="mailto:maedekhademi@outlook.com" aria-label="Email Maede">
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 12 13l9-6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+  Mail
+</a>
+
+<main>
+  <section class="case-study case-study--light">
+    <div class="case-study__glow"></div>
+    <div class="case-study__topbar">
+      <a class="case-study__back" href="../../#projects">
+        Back
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+    </div>
+    <div class="case-study__hero">
+      <div class="case-study__media komtai-hero">
+        <img class="komtai-hero__img" src="../../images/komtai-front.png" alt="Komtai oven toaster in blue, front view with touch display and two dials" width="250" height="129">
+      </div>
+      <div class="case-study__info">
+        <h1>Komtai</h1>
+        <span class="case-study__eyebrow">Problem solved</span>
+        <p class="case-study__problem">A toaster oven that keeps the classic look people like, with convection cooking and a smarter way of managing its own heat inside.</p>
+        <div class="case-study__meta">
+          <span>Product design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="flow">
+
+      <div class="flow__step">
+        <span class="flow__num">01</span>
+        <span class="section-label">The aim</span>
+        <h3 class="section-heading">Modern technology, in a classic shape</h3>
+        <p>Komtai is a new oven toaster. The goal was to bring the latest oven technology into a toaster that keeps a classic style and stays friendly to use.</p>
+        <img class="full-image full-image--flat komtai-img" src="../../images/komtai-exploded.png" alt="Exploded view of the Komtai oven: door, tray and rack, oven body, and the fan unit with its power cable" width="540" height="310">
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">02</span>
+        <span class="section-label">Convection</span>
+        <h3 class="section-heading">A fan moves the heat around the food</h3>
+        <p>A convection oven has a fan that circulates air around the food, which gives very even heat. The extra circulation cooks food faster than a conventional oven without a fan, and the baking comes out smooth and consistent.</p>
+        <img class="full-image full-image--flat komtai-img" src="../../images/komtai-interior.png" alt="Inside of the Komtai oven: a fan on the back wall with arrows showing air circulating around the tray" width="400" height="255">
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">03</span>
+        <span class="section-label">Keeping it cool</span>
+        <h3 class="section-heading">A blower and air valves manage the heat</h3>
+        <p>A blower pulls heat out of the oven to control the temperature of the internal chamber. Air valves on the underside let air in and out around the inner chamber, which lowers the temperature of the oven body itself.</p>
+        <img class="full-image full-image--flat komtai-img" src="../../images/komtai-airflow.png" alt="Komtai oven body with arrows showing warm air leaving through the top" width="345" height="275">
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">04</span>
+        <span class="section-label">Controls</span>
+        <h3 class="section-heading">A touch display and two dials</h3>
+        <p>A touch LCD shows the date and time, even in sleep mode, and lets you adjust temperature and time by touch. Two dials do the same job physically: TEMP sets the cooking temperature and TIME sets the cooking time.</p>
+        <img class="full-image full-image--flat komtai-img" style="max-width:300px" src="../../images/komtai-controls.png" alt="Close-up of the Komtai controls: touch display showing 22:10, a TEMP dial and a TIME dial" width="260" height="380">
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section footer-section">
+    <div class="center">
+      <a href="mailto:maedekhademi@outlook.com" class="btn btn--dark">Connect with me <span class="arrow">↗</span></a>
+    </div>
+    <footer class="footer">
+      <span>© <span id="year"></span> Maede Khademi</span>
+      <div class="footer__links">
+        <a href="../../#home">Home</a>
+        <a href="../../files/MKH-CV.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#contact">Contact</a>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<script src="../../script.js?v=1790952599_5617"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
