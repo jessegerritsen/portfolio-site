@@ -494,7 +494,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
   }, { passive: true });
   document.addEventListener('mouseleave', () => cursorDot.classList.remove('is-active'));
 
-  document.querySelectorAll('.project-panel').forEach(card => {
+  document.querySelectorAll('.project-panel:not(.project-panel--live), .project-panel--live .project-panel__info').forEach(card => {
     card.addEventListener('mouseenter', () => cursorDot.classList.add('is-hover'));
     card.addEventListener('mouseleave', () => cursorDot.classList.remove('is-hover'));
   });
@@ -543,3 +543,109 @@ const wordObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.observe(el));
+
+
+// Snapp panel: scroll-driven "research to screen" process shown inside the thumbnail
+(() => {
+  const sec = document.getElementById('s2s');
+  if (!sec) return;
+  const steps = sec.querySelectorAll('.s2s-step');
+  const btns = sec.querySelectorAll('.s2s-nav button');
+  const R = (p, a, b) => Math.min(1, Math.max(0, (p - a) / (b - a)));
+  const ease = t => t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;
+  const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- hand-drawn sketch, generated as wobbly pencil strokes ---- */
+  const svg = document.getElementById('s2s-sk'), NS = 'http://www.w3.org/2000/svg';
+  let seed = 11; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+  const j = (a = 1.6) => (rnd() - .5) * 2 * a;
+  const items = []; let idx = 0;
+  function add(d, i, cls = 'sk') { const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.setAttribute('pathLength', 1); p.setAttribute('class', cls); svg.appendChild(p); items.push({ el: p, i, kind: 'line' }); }
+  function line(x1, y1, x2, y2, i, cls = 'sk') {          // slightly bowed line with overshoot, drawn twice like a pencil
+    for (let k = 0; k < 2; k++) {
+      const o = k ? 1.2 : 0, dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1, ox = -dy / L, oy = dx / L, bow = j(L * .006 + .6);
+      add(`M${x1 - dx / L * 3 + j(o)} ${y1 - dy / L * 3 + j(o)} Q${(x1 + x2) / 2 + ox * bow + j(o)} ${(y1 + y2) / 2 + oy * bow + j(o)} ${x2 + dx / L * 2 + j(o)} ${y2 + dy / L * 2 + j(o)}`, i, k ? cls + ' lt' : cls);
+    }
+  }
+  function rect(x, y, w, h, i, cls = 'sk') { line(x, y, x + w, y, i, cls); line(x + w, y, x + w, y + h, i, cls); line(x + w, y + h, x, y + h, i, cls); line(x, y + h, x, y, i, cls); }
+  function ellipse(cx, cy, rx, ry, i, cls = 'sk', turns = 1.12) {
+    let d = ''; const n = 28, a0 = rnd() * 6.28;
+    for (let k = 0; k <= n * turns; k++) { const a = a0 + k / n * 6.28, r = 1 + j(.05); d += (k ? 'L' : 'M') + (cx + Math.cos(a) * rx * r).toFixed(1) + ' ' + (cy + Math.sin(a) * ry * r).toFixed(1); }
+    add(d, i, cls);
+  }
+  function pill(x, y, w, h, i) {                    // rounded search field
+    const r = h / 2; let d = ''; const n = 60;
+    for (let k = 0; k <= n + 3; k++) { const t = (k % n) / n * 2 * (w - 2 * r + Math.PI * r); let px, py, s = t;
+      const straight = w - 2 * r, arc = Math.PI * r;
+      if (s < straight) { px = x + r + s; py = y; }
+      else if ((s -= straight) < arc) { const a = -Math.PI / 2 + s / r; px = x + w - r + Math.cos(a) * r; py = y + r + Math.sin(a) * r; }
+      else if ((s -= arc) < straight) { px = x + w - r - s; py = y + h; }
+      else { s -= straight; const a = Math.PI / 2 + s / r; px = x + r + Math.cos(a) * r; py = y + r + Math.sin(a) * r; }
+      d += (k ? 'L' : 'M') + (px + j(.8)).toFixed(1) + ' ' + (py + j(.8)).toFixed(1); }
+    add(d, i);
+  }
+  function text(x, y, str, size, i) { const t = document.createElementNS(NS, 'text'); t.setAttribute('x', x); t.setAttribute('y', y); t.setAttribute('font-size', size); t.setAttribute('class', 'sk-t'); t.textContent = str; svg.appendChild(t); items.push({ el: t, i, kind: 'text' }); }
+  function mag(cx, cy, r, i) { ellipse(cx, cy, r, r, i); line(cx + r * .7, cy + r * .7, cx + r * 1.7, cy + r * 1.7, i); }
+  function img(x, y, w, h, i) { rect(x, y, w, h, i); line(x, y, x + w, y + h, i + .5, 'sk lt'); line(x + w, y, x, y + h, i + .5, 'sk lt'); line(x + 6, y + h + 26, x + w * .78, y + h + 25, i + 1); line(x + 7, y + h + 52, x + w * .38, y + h + 51, i + 1, 'sk lt'); }
+
+  rect(5, 5, 459, 1010, idx++);
+  text(24, 98, 'Home', 40, idx++);
+  mag(342, 58, 11, idx); line(386, 46, 394, 46, idx); line(394, 46, 402, 72, idx); line(402, 72, 428, 72, idx); line(398, 56, 434, 54, idx); line(434, 54, 428, 72, idx); ellipse(406, 82, 3.5, 3.5, idx); ellipse(424, 82, 3.5, 3.5, idx++);
+  pill(25, 118, 391, 80, idx++); mag(57, 156, 9, idx); text(96, 168, 'Search...', 28, idx++);
+  text(31, 288, 'Trending', 36, idx++);
+  img(36, 316, 113, 143, idx); img(179, 309, 114, 142, idx + .7); img(330, 302, 102, 141, idx + 1.4); idx += 3;
+  text(45, 628, 'For you', 36, idx++);
+  img(49, 655, 109, 143, idx); img(193, 649, 109, 142, idx + .7); img(340, 641, 104, 139, idx + 1.4); idx += 3;
+  line(28, 893, 466, 889, idx++);
+  { const x = 88, y = 958, i = idx++; line(x - 16, y - 2, x, y - 17, i); line(x, y - 17, x + 16, y - 2, i); rect(x - 12, y - 4, 24, 20, i); for (let k = 0; k < 6; k++) line(x - 11 + k * 4, y + 15, x - 6 + k * 4, y - 3, i + .4, 'sk lt'); }
+  mag(193, 953, 11, idx++);
+  { const i = idx++; rect(289, 946, 26, 24, i); ellipse(302, 942, 7, 6, i, 'sk', .55); }
+  { const i = idx++; ellipse(409, 940, 9, 9.5, i); line(392, 975, 398, 960, i); line(398, 960, 420, 960, i); line(420, 960, 426, 975, i); }
+  const N = idx;
+  items.forEach(o => { if (o.kind === 'text') o.el.style.clipPath = 'inset(0 100% 0 0)'; });
+
+  function drawSketch(k) {           // k: 0..1
+    const t = k * (N + 2);
+    items.forEach(o => {
+      const v = Math.min(1, Math.max(0, (t - o.i) / 2.2));
+      if (o.kind === 'text') o.el.style.clipPath = `inset(-20% ${((1 - v) * 100).toFixed(1)}% -20% 0)`;
+      else { o.el.style.strokeDashoffset = (1 - v).toFixed(3); o.el.style.visibility = v > 0 ? 'visible' : 'hidden'; }
+    });
+  }
+
+  /* ---- scroll timeline ---- */
+  const pin = sec.querySelector('.s2s-pin');
+  function prog() {
+    const r = sec.getBoundingClientRect();
+    const top = parseFloat(getComputedStyle(pin).top) || 0;
+    return { pre: R(innerHeight - r.top, innerHeight * .1, innerHeight * .95), p: R(top - r.top, 0, sec.offsetHeight - pin.offsetHeight) };
+  }
+  let cur = 0, curPre = 0, lastK = -1;
+  function paint(pre, p) {
+    const v = (n, x) => sec.style.setProperty(n, x.toFixed(4));
+    v('--pre', pre);
+    v('--g', ease(R(p, .03, .13)));
+    v('--q', ease(R(p, .17, .25)));
+    v('--pp', ease(R(p, .19, .25)));
+    const k = R(p, .22, .38); if (Math.abs(k - lastK) > .0005) { drawSketch(k); lastK = k; }
+    v('--s', ease(R(p, .45, .54)));
+    v('--d', R(p, .46, .6));
+    v('--c', ease(R(p, .64, .75)));
+    v('--f', ease(R(p, .8, .93)));
+    const st = p < .2 ? 0 : p < .43 ? 1 : p < .62 ? 2 : p < .78 ? 3 : 4;
+    steps.forEach((s, i) => s.classList.toggle('on', i === st));
+    btns.forEach((b, i) => b.classList.toggle('on', i === st));
+  }
+  (function loop() {
+    const t = prog();
+    cur = smooth ? cur + (t.p - cur) * .12 : t.p;  if (Math.abs(t.p - cur) < .0005) cur = t.p;
+    curPre = smooth ? curPre + (t.pre - curPre) * .12 : t.pre;
+    paint(curPre, cur);
+    requestAnimationFrame(loop);
+  })();
+  btns.forEach(b => b.addEventListener('click', () => {
+    const top = parseFloat(getComputedStyle(pin).top) || 0;
+    const y = scrollY + sec.getBoundingClientRect().top - top + (+b.dataset.p) * (sec.offsetHeight - pin.offsetHeight);
+    scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+  }));
+})();

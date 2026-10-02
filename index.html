@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1790945060_2609">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=1790945278_2809">
 </head>
 <body>
 
@@ -67,14 +68,123 @@
     <h2 class="section__title reveal">Featured projects</h2>
     <div class="project-list">
 
-      <a class="project-panel reveal" href="projects/snapp/">
+      <div class="project-panel project-panel--live">
         <span class="project-panel__index">01</span>
-        <div class="project-panel__media">
-          <div class="project-panel__parallax" data-parallax>
-            <img class="project-panel__img" src="images/proj-shop.png" alt="Snapp shop app screens">
+        <section class="s2s" id="s2s" aria-label="Snapp design process, driven by scroll">
+        <div class="s2s-pin">
+          <div class="s2s-copy">
+            <p class="s2s-kicker">Process · Shop app</p>
+            <div class="s2s-steps">
+              <div class="s2s-step on"><h2>01 · Research</h2><p>User interviews and a look at competing shop apps, sorted on an affinity map. Three themes kept coming back.</p></div>
+              <div class="s2s-step"><h2>02 · Sketch</h2><p>The themes turn into a first pencil layout: personal picks up top, quick to draw and quick to throw away.</p></div>
+              <div class="s2s-step"><h2>03 · Wireframe</h2><p>Structure and hierarchy. What goes where, what scrolls sideways, what you can tap. The layout moves on from the sketch.</p></div>
+              <div class="s2s-step"><h2>04 · Visual design</h2><p>Colour, type and real content. Soft card colours per product, a serif for headings, a clean sans for everything else.</p></div>
+              <div class="s2s-step"><h2>05 · Final screen</h2><p>Every theme made it in: personal picks became “Just for you”, deals got their own row, saving for later became the Wishlist tab.</p></div>
+            </div>
+            <div class="s2s-nav">
+              <button class="on" data-p=".13">Research</button><button data-p=".37">Sketch</button><button data-p=".55">Wireframe</button><button data-p=".72">Visual</button><button data-p=".98">Final</button>
+            </div>
+          </div>
+
+          <div class="s2s-stage">
+            <div class="s2s-board" aria-hidden="true">
+              <div class="s2s-theme" style="--x1:12;--y1:8;--x2:14;--y2:11">Personal picks</div>
+              <div class="s2s-note" style="--i:0;--x1:-6;--y1:22;--r1:-8;--x2:12;--y2:22;--r2:-2;--bg:#fde68a">“I want it to know what I like.”<small>Interview · P2</small></div>
+              <div class="s2s-note" style="--i:3;--x1:70;--y1:64;--r1:6;--x2:20;--y2:33;--r2:3;--bg:#fde68a">“Endless categories make me give up.”<small>Interview · P4</small></div>
+              <div class="s2s-theme" style="--x1:80;--y1:40;--x2:86;--y2:43">Deals bring me back</div>
+              <div class="s2s-note" style="--i:1;--x1:96;--y1:12;--r1:7;--x2:84;--y2:54;--r2:2;--bg:#f9c6c9">“I only open shop apps when there’s a sale.”<small>Interview · P1</small></div>
+              <div class="s2s-note" style="--i:4;--x1:10;--y1:50;--r1:-5;--x2:92;--y2:65;--r2:-3;--bg:#f9c6c9">“Show me the discount upfront.”<small>Competitor review</small></div>
+              <div class="s2s-theme" style="--x1:30;--y1:74;--x2:16;--y2:72">Save for later</div>
+              <div class="s2s-note" style="--i:2;--x1:46;--y1:30;--r1:4;--x2:12;--y2:83;--r2:2;--bg:#ddd0f7">“I add things to my cart just to remember them.”<small>Interview · P3</small></div>
+              <div class="s2s-note" style="--i:5;--x1:104;--y1:84;--r1:-6;--x2:22;--y2:95;--r2:-2;--bg:#ddd0f7">“A wishlist would be nicer.”<small>Interview · P5</small></div>
+            </div>
+            <div class="s2s-screen">
+              <svg viewBox="0 0 469.5 1020.5" aria-hidden="true" class="s2s-sk" id="s2s-sk"></svg>
+              <svg viewBox="0 0 469.5 1020.5" aria-hidden="true">
+                <!-- screen + device outline -->
+                <rect class="bg" x="0" y="0" width="469.5" height="1020.5" rx="40" fill="#fff"/>
+                <rect class="wf" pathLength="1" style="--i:0" x="0" y="0" width="469.5" height="1020.5" rx="40"/>
+                <!-- header -->
+                <g transform="translate(40 82)"><rect class="wf" pathLength="1" style="--i:1" x="-12" y="-6" width="24" height="18" rx="5"/><path class="wf" pathLength="1" style="--i:1" d="M-6 -6a6 6 0 0 1 12 0"/></g>
+                <g transform="translate(429 82)"><path class="wf" pathLength="1" style="--i:2" d="M-13 -9h4l3 12h13l3 -9H-7"/><circle class="wf" pathLength="1" style="--i:2" cx="-4" cy="8" r="2"/><circle class="wf" pathLength="1" style="--i:2" cx="7" cy="8" r="2"/></g>
+                <rect class="bar" style="--i:3" x="28" y="140" width="160" height="26" rx="4"/>
+                <text class="ink" x="28" y="164" font-family="Lora,serif" font-weight="500" font-size="30" fill="#2a2a2a">Just for you</text>
+                <path class="wf" pathLength="1" style="--i:3" d="M404 146l-7 8 7 8"/><path class="wf" pathLength="1" style="--i:3" d="M425 146l7 8-7 8"/>
+
+                <!-- card 1 -->
+                <rect class="ink" x="28" y="191" width="249" height="431" rx="14" fill="#e2bdbf"/>
+                <rect class="wf" pathLength="1" style="--i:4" x="28" y="191" width="249" height="431" rx="14"/>
+                <rect class="ink" x="75" y="249" width="155" height="242" fill="#efe9e8"/>
+                <rect class="wf soft" pathLength="1" style="--i:5" x="75" y="249" width="155" height="242"/>
+                <path class="wf soft" pathLength="1" style="--i:5" d="M75 249L230 491M230 249L75 491"/>
+                <g transform="translate(245 222)"><path class="wf" pathLength="1" style="--i:6" d="M0 8C-10 0-11-7-5-9-2-10 0-7 0-6 0-7 2-10 5-9 11-7 10 0 0 8Z"/></g>
+                <rect class="bar" style="--i:6" x="47" y="508" width="200" height="20" rx="4"/>
+                <rect class="bar" style="--i:7" x="47" y="541" width="82" height="13" rx="4"/>
+                <rect class="bar" style="--i:7" x="47" y="583" width="64" height="17" rx="4"/>
+                <g class="ink" font-family="Inter,sans-serif">
+                  <text x="47" y="527" font-family="Lora,serif" font-weight="500" font-size="22" fill="#2a2a2a">The Metamorphosis</text>
+                  <text x="47" y="555" font-size="14.5" fill="#6b6b6b">Franz Kafka</text>
+                  <text x="47" y="600" font-size="18" font-weight="500" fill="#4a4a4a">$12.99</text>
+                </g>
+
+                <!-- card 2 (runs off screen) -->
+                <path class="ink" d="M469.5 191H310a14 14 0 0 0-14 14v403a14 14 0 0 0 14 14h159.5Z" fill="#e7d1ee"/>
+                <path class="wf" pathLength="1" style="--i:8" d="M469.5 191H310a14 14 0 0 0-14 14v403a14 14 0 0 0 14 14h159.5"/>
+                <rect class="wf soft" pathLength="1" style="--i:9" x="330" y="330" width="139.5" height="110"/>
+                <path class="wf soft" pathLength="1" style="--i:9" d="M330 330L469.5 440M469.5 330L330 440"/>
+                <rect class="bar" style="--i:9" x="316" y="473" width="153" height="20" rx="4"/>
+                <rect class="bar" style="--i:10" x="316" y="502" width="100" height="20" rx="4"/>
+                <rect class="bar" style="--i:10" x="316" y="541" width="62" height="13" rx="4"/>
+                <rect class="bar" style="--i:10" x="316" y="583" width="76" height="17" rx="4"/>
+                <g class="ink" font-family="Inter,sans-serif">
+                  <text x="316" y="492" font-family="Lora,serif" font-weight="500" font-size="22" fill="#2a2a2a">Burberry Penel</text>
+                  <text x="316" y="520" font-family="Lora,serif" font-weight="500" font-size="22" fill="#2a2a2a">Sunglasses</text>
+                  <text x="316" y="555" font-size="14.5" fill="#6b6b6b">Burberry</text>
+                  <text x="316" y="600" font-size="18" font-weight="500" fill="#4a4a4a">$429.99</text>
+                </g>
+
+                <!-- deals -->
+                <rect class="bar" style="--i:11" x="28" y="664" width="58" height="20" rx="4"/>
+                <rect class="bar" style="--i:11" x="380" y="668" width="60" height="15" rx="4"/>
+                <g class="ink"><text x="28" y="683" font-family="Lora,serif" font-weight="500" font-size="22" fill="#2a2a2a">Deals</text>
+                  <text x="440" y="683" text-anchor="end" font-family="Inter,sans-serif" font-size="15.5" fill="#777">View all</text></g>
+                <rect class="ink" x="28" y="709" width="196" height="230" rx="12" fill="#f4f4f4"/>
+                <rect class="ink" x="244" y="709" width="196" height="230" rx="12" fill="#f4f4f4"/>
+                <path class="wf" pathLength="1" style="--i:12" d="M28 922V721a12 12 0 0 1 12-12h172a12 12 0 0 1 12 12v201"/>
+                <path class="wf" pathLength="1" style="--i:13" d="M244 922V721a12 12 0 0 1 12-12h172a12 12 0 0 1 12 12v201"/>
+                <rect class="wf soft" pathLength="1" style="--i:13" x="86" y="740" width="80" height="120"/><path class="wf soft" pathLength="1" style="--i:13" d="M86 740L166 860M166 740L86 860"/>
+                <rect class="wf soft" pathLength="1" style="--i:14" x="302" y="752" width="80" height="120"/><path class="wf soft" pathLength="1" style="--i:14" d="M302 752L382 872M382 752L302 872"/>
+                <g transform="translate(200 732)"><path class="wf" pathLength="1" style="--i:14" d="M0 7C-9 0-10-6-5-8-2-9 0-6 0-5 0-6 2-9 5-8 10-6 9 0 0 7Z"/></g>
+                <g transform="translate(416 732)"><path class="wf" pathLength="1" style="--i:14" d="M0 7C-9 0-10-6-5-8-2-9 0-6 0-5 0-6 2-9 5-8 10-6 9 0 0 7Z"/></g>
+                <rect class="bar" style="--i:15" x="42" y="884" width="160" height="17" rx="4"/>
+                <rect class="bar" style="--i:15" x="258" y="884" width="94" height="17" rx="4"/>
+                <g class="ink" font-family="Lora,serif" font-weight="500" font-size="18" fill="#2a2a2a"><text x="42" y="899">Bose Noise Cancell…</text><text x="258" y="899">The Hobbit</text></g>
+
+                <!-- tab bar -->
+                <rect x="0" y="922" width="469.5" height="98.5" fill="#fff" class="bg" style="clip-path:inset(0 round 0 0 40px 40px)"/>
+                <path class="wf soft" pathLength="1" style="--i:16" d="M0 922H469.5"/>
+                <g transform="translate(75 949)"><path class="wf" pathLength="1" style="--i:17" d="M-9 10V0L0-8 9 0V10H3V3H-3V10Z"/></g>
+                <g transform="translate(181 949)"><path class="wf soft" pathLength="1" style="--i:17" d="M0 9C-11 0-12-7-6-10-2-11 0-8 0-7 0-8 2-11 6-10 12-7 11 0 0 9Z"/></g>
+                <g transform="translate(287 949)"><circle class="wf soft" pathLength="1" style="--i:18" cx="0" cy="-4" r="5.5"/><path class="wf soft" pathLength="1" style="--i:18" d="M-10 11C-10 3 10 3 10 11"/></g>
+                <g transform="translate(392 949)"><circle class="wf soft" pathLength="1" style="--i:18" cx="-2" cy="-2" r="7.5"/><path class="wf soft" pathLength="1" style="--i:18" d="M3.5 3.5L10 10"/></g>
+                <g class="ink" font-family="Inter,sans-serif" font-size="12.5" text-anchor="middle" fill="#b5b5b5"><text x="75" y="978" fill="#222">Home</text><text x="181" y="978">Wishlist</text><text x="287" y="978">Profile</text><text x="392" y="978">Search</text></g>
+                <rect class="wf" pathLength="1" style="--i:19" x="149" y="1001" width="172" height="5" rx="2.5"/>
+              </svg>
+            </div>
+            <img class="s2s-final" src="images/snap-s2s-final.webp" alt="Finished shop app home screen on a phone">
+            <div class="s2s-scan"></div>
+            <div class="s2s-chips">
+              <div><i style="background:#e2bdbf"></i>Blush card</div>
+              <div><i style="background:#e7d1ee"></i>Lilac card</div>
+              <div><i style="background:#f4f4f4"></i>Neutral card</div>
+              <div><i style="background:#fde68a"></i>Brand yellow</div>
+              <div><b>Aa</b>Serif headings</div>
+              <div><b style="font-family:Inter">Aa</b>Sans UI text</div>
+            </div>
           </div>
         </div>
-        <div class="project-panel__info">
+        </section>
+        <a class="project-panel__info" href="projects/snapp/">
           <div class="project-panel__text">
             <h3 class="project-panel__title" data-reveal-words>Snapp: a shop app built around what you actually want</h3>
             <p class="project-panel__desc">Research-led shopping app with a personalised feed, live order tracking and a wishlist.</p>
@@ -84,8 +194,8 @@
             <span class="tag">Research</span>
             <span class="tag">Product development</span>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
 
       <a class="project-panel reveal" href="projects/tiny-rocket/">
         <span class="project-panel__index">02</span>
@@ -354,6 +464,6 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
-<script src="script.js?v=1790945060_2609"></script>
+<script src="script.js?v=1790945278_2809"></script>
 </body>
 </html>
