@@ -58,7 +58,7 @@ a{color:inherit;text-decoration:none;}
   text-align:center;
   opacity:0;
   transform:translateY(8px);
-  transition:opacity .18s ease,transform .18s ease;
+  transition:opacity .6s ease,transform .6s ease;
 }
 .intro-splash__accent{
   color:#f4f3f1;
@@ -80,7 +80,7 @@ a{color:inherit;text-decoration:none;}
   background:#46566e;
   transform:translate(-50%,0);
   transition:width .4s cubic-bezier(.65,0,.35,1),height .4s cubic-bezier(.65,0,.35,1);
-  animation:introBlobMorph 4s ease-in-out infinite;
+  animation:introBlobMorph 4s ease-in-out infinite, blobColorFlow 14s ease-in-out infinite;
   pointer-events:none;
 }
 .intro-drop.is-covering{width:300vmax;height:300vmax;}
@@ -90,6 +90,7 @@ a{color:inherit;text-decoration:none;}
   transition:top .28s cubic-bezier(.65,0,.35,1),left .28s cubic-bezier(.65,0,.35,1),
     width .28s cubic-bezier(.65,0,.35,1),height .28s cubic-bezier(.65,0,.35,1),opacity .28s ease;
 }
+@keyframes blobColorFlow{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
 @keyframes introBlobMorph{
   0%,100%{border-radius:60% 40% 55% 45%/45% 60% 40% 55%;}
   33%{border-radius:45% 55% 40% 60%/55% 45% 60% 40%;}
@@ -188,15 +189,17 @@ main{max-width:var(--max);margin:0 auto;padding:0 20px 40px;}
   left:50%;
   width:min(90vw,640px);
   height:min(90vw,640px);
-  background:#46566e;
+  background-color:#46566e;
+  background-image:radial-gradient(circle at 22% 28%,#f47a3c 0%,transparent 52%),radial-gradient(circle at 78% 22%,#7c5cff 0%,transparent 55%),radial-gradient(circle at 72% 80%,#14b8a6 0%,transparent 52%),radial-gradient(circle at 24% 82%,#ec4899 0%,transparent 48%);
+  background-size:140% 140%;
   border-radius:60% 40% 55% 45%/45% 60% 40% 55%;
-  animation:introBlobMorph 8s ease-in-out infinite;
+  animation:introBlobMorph 8s ease-in-out infinite, blobColorFlow 14s ease-in-out infinite;
   opacity:0;
   transform:translate(-50%,-50%) scale(.85);
   transition:opacity 1s ease .1s,transform 1s ease .1s;
   pointer-events:none;
 }
-.hero__blob.is-visible{opacity:.16;transform:translate(-50%,-50%) scale(1);}
+.hero__blob.is-visible{opacity:.3;transform:translate(-50%,-50%) scale(1);}
 .hero__orbit{
   position:absolute;
   z-index:0;
