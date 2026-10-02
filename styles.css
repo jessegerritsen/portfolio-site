@@ -1823,7 +1823,7 @@ img.badge--photo{
 
 
 /* Snapp panel: scroll-driven "research to screen" process, pinned inside the thumbnail */
-.s2s{--t:0;--h:0;--m1:0;--m2:0;--m3:0;--m4:0;--pre:0;--g:0;--q:0;--pp:0;--s:0;--d:0;--c:0;--f:0;position:relative;height:420vh;margin-top:0}
+.s2s{--t:0;--h:0;--m1:0;--m2:0;--m3:0;--m4:0;--pre:0;--g:0;--q:0;--pp:0;--s:0;--d:0;--c:0;--f:0;position:relative;height:475vh;margin-top:0}
 .s2s-pin{position:sticky;top:96px;height:clamp(540px,calc(100vh - 120px),760px);display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden;border-radius:var(--radius-lg);background:var(--card);box-shadow:var(--shadow)}
 .s2s-main{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,360px) auto;justify-content:center;align-items:center;gap:clamp(24px,4vw,56px);padding:0 clamp(16px,4vw,48px);box-sizing:border-box}
 .s2s-copy{max-width:360px}
@@ -1969,7 +1969,7 @@ img.badge--photo{
 @media (max-width:700px){.komtai-live{height:calc(100% - 215px)}}
 
 /* Plant B thumbnail: title, then the app screens arrive one by one as you scroll */
-.pbs{--h:0;--m1:0;--m2:0;--m3:0;--m4:0;position:relative;height:300vh}
+.pbs{--h:0;--m1:0;--m2:0;--m3:0;--m4:0;position:relative;height:355vh}
 .pbs-pin{position:sticky;top:96px;height:clamp(540px,calc(100vh - 120px),760px);display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden;border-radius:var(--radius-lg);background:var(--card);box-shadow:var(--shadow)}
 .pbs-stage{position:relative;flex:1;min-height:0;overflow:hidden;text-align:center;background:radial-gradient(ellipse 80% 65% at 50% 100%,#cfeccb 0%,#f3faf1 100%)}
 .pbs-title{position:absolute;left:0;right:0;top:clamp(8px,2vw,24px);font-family:'Quicksand',sans-serif;font-weight:700;font-size:clamp(72px,13vw,160px);line-height:.9;letter-spacing:-.05em;color:var(--ink);margin:0;opacity:var(--h);transform:translateY(calc((1 - var(--h))*32px))}
@@ -2061,3 +2061,8 @@ img.badge--photo{
 .ai-card:nth-child(3) .ai-card__num{color:#f47a3c}
 .ai-card p{font-size:.88rem}
 @media (max-width:760px){.ai-grid{grid-template-columns:1fr}}
+
+/* Each project holds the screen for an extra half-screen of scrolling, so a quick flick
+   can't skip past it. Pinned stories end with the same hold (see script.js). */
+.project-hold::after{content:"";display:block;height:55vh}   /* the room the panel stays pinned for */
+.project-hold > .project-panel{position:sticky;top:var(--stick,96px)}

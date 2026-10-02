@@ -618,7 +618,7 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   function prog() {
     const r = sec.getBoundingClientRect();
     const top = parseFloat(getComputedStyle(pin).top) || 0;
-    return { pre: R(innerHeight - r.top, innerHeight * .1, innerHeight * .95), p: R(top - r.top, 0, sec.offsetHeight - pin.offsetHeight) };
+    return { pre: R(innerHeight - r.top, innerHeight * .1, innerHeight * .95), p: R(top - r.top, 0, sec.offsetHeight - pin.offsetHeight - innerHeight * .55) };
   }
   let cur = 0, curPre = 0, lastK = -1;
   function paint(pre, p) {
@@ -652,7 +652,7 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   })();
   btns.forEach(b => b.addEventListener('click', () => {
     const top = parseFloat(getComputedStyle(pin).top) || 0;
-    const y = scrollY + sec.getBoundingClientRect().top - top + (+b.dataset.p) * (sec.offsetHeight - pin.offsetHeight);
+    const y = scrollY + sec.getBoundingClientRect().top - top + (+b.dataset.p) * (sec.offsetHeight - pin.offsetHeight - innerHeight * .55);
     scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
   }));
 })();
@@ -669,7 +669,7 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   function paint() {
     ticking = false;
     const top = parseFloat(getComputedStyle(pin).top) || 0;
-    const span = sec.offsetHeight - pin.offsetHeight;
+    const span = sec.offsetHeight - pin.offsetHeight - innerHeight * .55;
     const p = reduce ? 1 : R(top - sec.getBoundingClientRect().top, 0, span);
     const set = (k, v) => sec.style.setProperty(k, v.toFixed(4));
     set('--h', ease(R(p, 0.0, 0.12)));
@@ -708,4 +708,19 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
     clearTimeout(t);
     t = setTimeout(() => { btn.classList.remove('is-copied', 'is-tip'); tip.textContent = ''; }, 1800);
   });
+})();
+
+/* Held project panels: keep the whole panel on screen while it is pinned */
+(function () {
+  const panels = document.querySelectorAll('.project-hold > .project-panel');
+  if (!panels.length) return;
+  function fit() {
+    panels.forEach(p => {
+      const top = Math.min(96, Math.round(innerHeight - p.offsetHeight - 20));
+      p.style.setProperty('--stick', top + 'px');
+    });
+  }
+  addEventListener('resize', fit);
+  addEventListener('load', fit);
+  fit();
 })();

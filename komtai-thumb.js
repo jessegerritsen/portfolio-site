@@ -4,6 +4,7 @@
   if (!canvas) return;
   var media = canvas.parentElement;
   var panel = media.closest('.project-panel');
+  var hold = panel.closest('.project-hold') || panel;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var model = null, loading = false, visible = false;
   var DIR = 'projects/komtai/';
@@ -21,9 +22,12 @@
 
   function update() {
     if (!model) return;
-    var r = panel.getBoundingClientRect(), vh = window.innerHeight;
-    var p = clamp((vh - r.top) / (vh + r.height));          // 0 as it enters, 1 as it leaves
-    var e = ease(clamp((p - 0.18) / 0.32));                  // explodes while it crosses the middle of the screen
+    var vh = window.innerHeight;
+    var stick = parseFloat(getComputedStyle(panel).top) || 0;
+    var scrolled = vh * 0.9 - hold.getBoundingClientRect().top;   // 0 as the panel enters view
+    var total = vh * 0.9 - stick + vh * 0.55;                      // enter + the held half-screen
+    var p = clamp(scrolled / total);
+    var e = ease(clamp((p - 0.3) / 0.6));                          // explodes while the panel is pinned
     model.drive(e, 0.45 + p * 0.5, 0.3 - e * 0.07);
   }
   function size() {
