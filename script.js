@@ -73,16 +73,16 @@ if (introEl && dropEl) {
     document.documentElement.style.overflow = 'hidden';
     requestAnimationFrame(() => introEl.classList.add('is-text-visible'));
     setTimeout(() => introEl.classList.remove('is-text-visible'), 2560); // long enough to read
-    setTimeout(() => dropEl.classList.add('is-covering'), 2700); // fast, .4s grow
+    setTimeout(() => dropEl.classList.add('is-covering'), 2700); // slow, 1.4s grow
     // Restore scrolling before measuring/settling into the target, so the
     // scrollbar's width is already accounted for and the handoff can't jump.
-    setTimeout(() => { document.documentElement.style.overflow = ''; }, 3100);
+    setTimeout(() => { document.documentElement.style.overflow = ''; }, 4100);
     setTimeout(() => {
       introEl.classList.add('is-hidden'); // page fades in
       dropEl.classList.add('is-behind'); // drop tucks behind hero content right as it appears
-    }, 3120);
-    setTimeout(settleDropIntoHero, 3120); // same drop shrinks into the hero blob's spot
-    setTimeout(revealHeroBlob, 3350);
+    }, 4120);
+    setTimeout(settleDropIntoHero, 4120); // same drop shrinks into the hero blob's spot
+    setTimeout(revealHeroBlob, 5100);
   }
 } else if (heroBlobEl) {
   heroBlobEl.classList.add('is-visible');

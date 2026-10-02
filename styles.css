@@ -43,7 +43,7 @@ a{color:inherit;text-decoration:none;}
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  transition:opacity .25s ease;
+  transition:opacity .7s ease;
 }
 .intro-splash.is-hidden{opacity:0;pointer-events:none;}
 .intro-splash__text{
@@ -79,7 +79,7 @@ a{color:inherit;text-decoration:none;}
   border-radius:60% 40% 55% 45%/45% 60% 40% 55%;
   background:#46566e;
   transform:translate(-50%,0);
-  transition:width .4s cubic-bezier(.65,0,.35,1),height .4s cubic-bezier(.65,0,.35,1);
+  transition:width 1.4s cubic-bezier(.45,0,.2,1),height 1.4s cubic-bezier(.45,0,.2,1);
   animation:introBlobMorph 4s ease-in-out infinite, blobColorFlow 14s ease-in-out infinite;
   pointer-events:none;
 }
@@ -87,8 +87,8 @@ a{color:inherit;text-decoration:none;}
 .intro-drop.is-behind{z-index:0;}
 .intro-drop.is-settling{
   transform:none;
-  transition:top .28s cubic-bezier(.65,0,.35,1),left .28s cubic-bezier(.65,0,.35,1),
-    width .28s cubic-bezier(.65,0,.35,1),height .28s cubic-bezier(.65,0,.35,1),opacity .28s ease;
+  transition:top .9s cubic-bezier(.45,0,.2,1),left .9s cubic-bezier(.45,0,.2,1),
+    width .9s cubic-bezier(.45,0,.2,1),height .9s cubic-bezier(.45,0,.2,1),opacity .9s ease;
 }
 @keyframes blobColorFlow{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
 @keyframes introBlobMorph{
