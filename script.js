@@ -632,6 +632,8 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
     v('--d', R(p, .46, .6));
     v('--c', ease(R(p, .64, .75)));
     v('--f', ease(R(p, .8, .93)));
+    v('--t', ease(R(p, .92, .98)));
+    sec.classList.toggle('is-end', p > .98);
     const st = p < .2 ? 0 : p < .43 ? 1 : p < .62 ? 2 : p < .78 ? 3 : 4;
     steps.forEach((s, i) => s.classList.toggle('on', i === st));
     btns.forEach((b, i) => b.classList.toggle('on', i === st));

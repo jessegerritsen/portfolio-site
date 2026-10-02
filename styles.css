@@ -1819,7 +1819,7 @@ img.badge--photo{
 
 
 /* Snapp panel: scroll-driven "research to screen" process, pinned inside the thumbnail */
-.s2s{--pre:0;--g:0;--q:0;--pp:0;--s:0;--d:0;--c:0;--f:0;position:relative;height:360vh;margin-top:0}
+.s2s{--t:0;--pre:0;--g:0;--q:0;--pp:0;--s:0;--d:0;--c:0;--f:0;position:relative;height:360vh;margin-top:0}
 .s2s-pin{position:sticky;top:96px;height:clamp(500px,calc(100vh - 130px),700px);display:grid;grid-template-columns:minmax(0,360px) auto;justify-content:center;align-items:center;gap:clamp(24px,4vw,56px);padding:0 clamp(16px,4vw,48px);box-sizing:border-box;overflow:hidden;border-radius:var(--radius-lg);background:var(--card);box-shadow:var(--shadow)}
 .s2s-copy{max-width:360px}
 .s2s-kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#d93a2b;font-weight:600;margin:0 0 14px}
@@ -1883,3 +1883,19 @@ img.badge--photo{
 }
 @media (prefers-reduced-motion:reduce){.s2s-step{transition:none}}
 .project-panel--live .project-panel__info{display:flex;color:inherit;text-decoration:none;cursor:pointer}
+
+/* End state: the process resolves into the project thumbnail, plus a few small micro-interactions */
+.s2s-copy,.s2s-stage{opacity:calc(1 - var(--t))}
+.s2s.is-end .s2s-copy{pointer-events:none}
+.s2s-end{position:absolute;inset:0;opacity:var(--t);pointer-events:none;overflow:hidden;background:#fbf3d3}
+.s2s.is-end .s2s-end{pointer-events:auto}
+.s2s-end img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(calc(1.05 - var(--t)*.05));scale:1;transition:scale .7s cubic-bezier(.2,.7,.3,1)}
+.s2s-end:hover img{scale:1.03}
+.s2s-note{pointer-events:auto;transition:box-shadow .25s ease}
+.s2s-note:hover{box-shadow:0 16px 26px -12px rgba(0,0,0,.5);z-index:3}
+.s2s-chips div{transition:transform .25s ease,box-shadow .25s ease}
+.s2s-chips div:hover{transform:translateX(4px);box-shadow:0 10px 22px -8px rgba(0,0,0,.3)}
+.s2s-nav button:active{transform:scale(.95)}
+.s2s-nav button:not(.on):hover{border-color:#18181a;color:#18181a}
+.s2s-nav button:focus-visible{outline:2px solid #d93a2b;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.s2s-end img,.s2s-note,.s2s-chips div{transition:none}}
