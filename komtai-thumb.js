@@ -29,6 +29,7 @@
     var p = clamp(scrolled / total);
     var e = ease(clamp((p - 0.3) / 0.6));                          // explodes while the panel is pinned
     model.drive(e, 0.45 + p * 0.5, 0.3 - e * 0.07);
+    media.style.setProperty('--prog', p.toFixed(4));
   }
   function size() {
     if (model) model.resize(canvas.clientWidth, canvas.clientHeight);

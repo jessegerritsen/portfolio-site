@@ -2066,3 +2066,11 @@ img.badge--photo{
    can't skip past it. Pinned stories end with the same hold (see script.js). */
 .project-hold::after{content:"";display:block;height:55vh}   /* the room the panel stays pinned for */
 .project-hold > .project-panel{position:sticky;top:var(--stick,96px)}
+
+/* Minimal scroll progress rail for the projects that move with scrolling */
+.scroll-prog{position:absolute;right:14px;top:22px;bottom:22px;width:3px;border-radius:3px;background:rgba(0,0,0,.09);z-index:4;pointer-events:none;--pc:linear-gradient(#f47a3c,#ec4899 30%,#7c5cff 55%,#14b8a6 78%,#f5a524)}
+.scroll-prog i{position:absolute;inset:0;border-radius:3px;background:var(--pc);clip-path:inset(0 0 calc((1 - var(--prog,0))*100%) 0)}
+.scroll-prog::after{content:"";position:absolute;left:50%;top:calc(var(--prog,0)*100%);width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px rgba(0,0,0,.18),0 2px 6px rgba(0,0,0,.2);transform:translate(-50%,-50%)}
+.scroll-prog--plant{--pc:linear-gradient(#2f9e5b,#7cc98b 60%,#cfeccb)}
+.scroll-prog--komtai{--pc:linear-gradient(#305a88,#5d8fc4 60%,#9cc2e6);top:22px;bottom:122px}
+@media (max-width:820px){.scroll-prog{right:8px;top:16px;bottom:16px}.scroll-prog--komtai{bottom:236px}}

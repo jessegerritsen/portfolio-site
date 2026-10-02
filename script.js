@@ -624,6 +624,7 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   function paint(pre, p) {
     const v = (n, x) => sec.style.setProperty(n, x.toFixed(4));
     v('--pre', pre);
+    v('--prog', p);
     v('--g', ease(R(p, .03, .13)));
     v('--q', ease(R(p, .17, .25)));
     v('--pp', ease(R(p, .19, .25)));
@@ -672,6 +673,7 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
     const span = sec.offsetHeight - pin.offsetHeight - innerHeight * .55;
     const p = reduce ? 1 : R(top - sec.getBoundingClientRect().top, 0, span);
     const set = (k, v) => sec.style.setProperty(k, v.toFixed(4));
+    set('--prog', p);
     set('--h', ease(R(p, 0.0, 0.12)));
     set('--m1', ease(R(p, 0.14, 0.34)));
     set('--m2', ease(R(p, 0.30, 0.50)));
