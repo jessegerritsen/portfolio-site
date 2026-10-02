@@ -2027,3 +2027,24 @@ img.badge--photo{
   .s2s-m3{left:37%;height:60%;bottom:-3%}
   .s2s-m4{right:1%;height:44%}
 }
+
+/* Contact: email address with a copy button */
+.contact-mail{display:inline-flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;max-width:100%}
+.copy-btn{position:relative;appearance:none;width:48px;height:48px;border-radius:50%;border:1px solid rgba(0,0,0,.14);background:var(--card-alt);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow);transition:background .2s,color .2s,border-color .2s,transform .2s}
+.copy-btn:hover{border-color:rgba(0,0,0,.4);transform:translateY(-1px)}
+.copy-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.copy-btn__done{display:none}
+.copy-btn.is-copied{background:var(--dark-pill);border-color:var(--dark-pill);color:var(--dark-pill-text)}
+.copy-btn.is-copied .copy-btn__icon{display:none}
+.copy-btn.is-copied .copy-btn__done{display:block}
+.copy-btn__tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);font-family:'Quicksand',sans-serif;font-weight:600;font-size:.72rem;white-space:nowrap;background:var(--dark-pill);color:var(--dark-pill-text);padding:5px 10px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s}
+.copy-btn.is-tip .copy-btn__tip{opacity:1}
+@media (max-width:420px){.contact-mail .btn{font-size:.85rem;padding-left:18px;padding-right:18px}}
+
+/* Tiny Rocket on phones: centred, less zoomed, with the title bar below the video instead of over it */
+@media (max-width:700px){
+  .project-panel__media--video{height:auto}
+  .project-panel__media--video .project-panel__parallax{height:260px;margin-top:0}
+  .project-panel__media--video .project-panel__img{object-position:center center}
+  .project-panel__media--video > .project-panel__info{position:relative;background:#fff}
+}

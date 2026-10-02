@@ -683,3 +683,29 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   addEventListener('resize', req);
   paint();
 })();
+
+/* Copy email address */
+(function () {
+  const btn = document.querySelector('.copy-btn');
+  if (!btn) return;
+  const tip = btn.querySelector('.copy-btn__tip');
+  let t;
+  async function copy(text) {
+    try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    ta.remove();
+    return ok;
+  }
+  btn.addEventListener('click', async () => {
+    const ok = await copy(btn.dataset.copy);
+    tip.textContent = ok ? 'Copied' : 'Couldn\u2019t copy, tap the address instead';
+    btn.classList.toggle('is-copied', ok);
+    btn.classList.add('is-tip');
+    clearTimeout(t);
+    t = setTimeout(() => { btn.classList.remove('is-copied', 'is-tip'); tip.textContent = ''; }, 1800);
+  });
+})();
