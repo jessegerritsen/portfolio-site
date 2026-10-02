@@ -324,6 +324,7 @@ img.badge--photo{
   margin-bottom:14px;
 }
 .project-panel__media{
+  position:relative;
   height:clamp(320px,52vw,640px);
   border-radius:var(--radius-lg);
   overflow:hidden;
@@ -1907,3 +1908,9 @@ img.badge--photo{
 .s2s-m4{--p:var(--m4);right:13%;height:47%;rotate:6deg;z-index:1}
 .s2s-nav button:focus-visible{outline:2px solid #d93a2b;outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.s2s-m,.s2s-num{transition:none}}
+
+/* Title bar sits inside the media box on the other projects too */
+.project-panel__media > .project-panel__info{position:absolute;left:0;right:0;bottom:0;margin:0;padding:16px clamp(16px,3vw,32px);background:rgba(255,255,255,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(0,0,0,.06);z-index:2}
+.project-panel__media .project-panel__title{font-size:clamp(1.05rem,1.8vw,1.35rem)}
+.project-panel__media .project-panel__desc{margin-top:4px;font-size:.85rem}
+@media (max-width:700px){.project-panel__media{height:440px}}
