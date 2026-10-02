@@ -1916,7 +1916,45 @@ img.badge--photo{
 @media (max-width:700px){.project-panel__media{height:440px}}
 
 /* Komtai (product design) case study */
-.komtai-hero{width:100%;max-width:460px;margin:0 auto}
-.komtai-hero__img{display:block;width:100%;height:auto;filter:drop-shadow(0 22px 26px rgba(20,40,70,.22))}
+.komtai-hero{width:100%;max-width:580px;margin:0 auto}
+.komtai-hero__img{display:block;width:100%;height:auto}
 .komtai-img{max-width:620px;margin-left:auto;margin-right:auto;background:#fff}
 .project-panel__img--contain{object-fit:contain;padding:5% 14% 12%;box-sizing:border-box;background:#fff}
+
+/* Komtai: interactive 3D viewer + parts */
+.kv{background:var(--card-alt);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;margin-top:8px}
+.kv__stage{position:relative;height:clamp(340px,56vw,560px);background:radial-gradient(ellipse 70% 60% at 50% 55%,#fff 0%,#f1f2f4 100%);cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.kv__stage.is-drag{cursor:grabbing}
+.kv__poster,.kv__canvas{position:absolute;inset:0;width:100%;height:100%}
+.kv__poster{object-fit:contain;padding:4%;box-sizing:border-box;transition:opacity .4s ease}
+.kv__canvas{display:block;opacity:0;transition:opacity .4s ease}
+.kv.is-live .kv__canvas{opacity:1}
+.kv.is-live .kv__poster{opacity:0}
+.kv__labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.kv-label{position:absolute;left:0;top:0;opacity:0;padding:5px 11px;border-radius:999px;background:var(--dark-pill);color:var(--dark-pill-text);font-family:'Quicksand',sans-serif;font-weight:600;font-size:.72rem;white-space:nowrap;will-change:transform}
+.kv__hint{white-space:nowrap;position:absolute;left:50%;bottom:14px;transform:translateX(-50%);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);pointer-events:none;transition:opacity .4s ease}
+.kv.is-touched .kv__hint{opacity:0}
+.kv__bar{padding:16px clamp(14px,2.4vw,24px) 20px;display:flex;flex-direction:column;gap:14px;border-top:1px solid rgba(0,0,0,.06)}
+.kv__row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.kv__row-label{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px;min-width:54px}
+.kv__chip{appearance:none;border:1px solid rgba(0,0,0,.12);background:#fff;color:var(--ink);font-family:'Quicksand',sans-serif;font-weight:600;font-size:.82rem;padding:7px 14px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.kv__chip:hover{border-color:rgba(0,0,0,.35)}
+.kv__chip.is-active{background:var(--dark-pill);border-color:var(--dark-pill);color:var(--dark-pill-text)}
+.kv__chip:focus-visible,.kv__range:focus-visible{outline:2px solid #305a88;outline-offset:2px}
+.kv__range{flex:1;min-width:140px;max-width:360px;accent-color:#305a88;cursor:pointer}
+.kv__caption{margin:0;font-size:.88rem;color:var(--ink-soft);min-height:2.8em;max-width:62ch}
+.kparts{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:14px;margin-top:22px}
+.kparts .brief-card p{font-size:.82rem}
+.kparts .brief-card__label{display:flex;align-items:center;gap:8px}
+.kparts .brief-card__label i{width:9px;height:9px;border-radius:50%;background:#305a88;display:inline-block}
+.komtai-note{font-size:.8rem;color:var(--ink-soft);max-width:62ch;margin-top:10px}
+.komtai-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:6px}
+.komtai-gallery figure{margin:0;background:#fff;border-radius:var(--radius-md);padding:10px 10px 12px;box-shadow:var(--shadow);text-align:center}
+.komtai-gallery img{width:100%;height:230px;object-fit:contain;display:block;cursor:zoom-in}
+.komtai-gallery figcaption{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+.komtai-img--wide{max-width:100%}
+@media (max-width:640px){.komtai-gallery{grid-template-columns:1fr 1fr;gap:10px}.komtai-gallery img{height:150px}.kv__row-label{width:100%}}
+.komtai-pair img{aspect-ratio:4/3;object-fit:contain;background:#fff;padding:12px;box-sizing:border-box}
+.komtai-pair--tall img{aspect-ratio:4/5}
+.komtai-pair img,.komtai-img{height:auto}
+@media (max-width:700px){.project-panel__media{height:500px}.project-panel__img--contain{padding:6% 8% 50%}}

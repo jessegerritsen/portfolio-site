@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Komtai — Maede Khademi</title>
-<meta name="description" content="Komtai: a classic-style convection oven toaster, a product design project.">
+<meta name="description" content="Komtai: a classic-style convection oven toaster, a product design project with an interactive 3D model and exploded view.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../styles.css?v=1790961929_6709">
+<link rel="stylesheet" href="../../styles.css?v=1790962677_7536">
 </head>
 <body>
 
@@ -28,7 +28,7 @@
     </div>
     <div class="case-study__hero">
       <div class="case-study__media komtai-hero">
-        <img class="komtai-hero__img" src="../../images/komtai-front.png" alt="Komtai oven toaster in blue, front view with touch display and two dials" width="250" height="129">
+        <img class="komtai-hero__img" src="../../images/komtai-3d-hero.png" alt="3D render of the Komtai oven toaster in blue, with a touch display and two dials" width="1300" height="878">
       </div>
       <div class="case-study__info">
         <h1>Komtai</h1>
@@ -49,31 +49,106 @@
         <span class="section-label">The aim</span>
         <h3 class="section-heading">Modern technology, in a classic shape</h3>
         <p>Komtai is a new oven toaster. The goal was to bring the latest oven technology into a toaster that keeps a classic style and stays friendly to use.</p>
-        <img class="full-image full-image--flat komtai-img" src="../../images/komtai-exploded.png" alt="Exploded view of the Komtai oven: door, tray and rack, oven body, and the fan unit with its power cable" width="540" height="310">
+        <img class="full-image full-image--flat komtai-img" src="../../images/komtai-exploded.png" alt="Original exploded view of the Komtai oven: door, tray and rack, oven body, and the fan unit with its power cable" width="540" height="310">
       </div>
 
       <div class="flow__step">
         <span class="flow__num">02</span>
-        <span class="section-label">Convection</span>
-        <h3 class="section-heading">A fan moves the heat around the food</h3>
-        <p>A convection oven has a fan that circulates air around the food, which gives very even heat. The extra circulation cooks food faster than a conventional oven without a fan, and the baking comes out smooth and consistent.</p>
-        <img class="full-image full-image--flat komtai-img" src="../../images/komtai-interior.png" alt="Inside of the Komtai oven: a fan on the back wall with arrows showing air circulating around the tray" width="400" height="255">
+        <span class="section-label">The 3D model</span>
+        <h3 class="section-heading">Turn it, open it, take it apart</h3>
+        <p>The oven rebuilt as a 3D model you can handle. Drag to rotate, pull the slider to explode it into parts, or pick a mode to see the door open, the air move inside and the heat leave.</p>
+        <div class="kv" id="kv" data-v="3">
+          <div class="kv__stage" tabindex="0" role="group" aria-label="Interactive 3D model of the Komtai oven. Drag to rotate, arrow keys also work.">
+            <img class="kv__poster" src="../../images/komtai-3d-hero.png" alt="3D render of the Komtai oven" width="1300" height="878">
+            <canvas class="kv__canvas" aria-hidden="true"></canvas>
+            <div class="kv__labels"></div>
+            <span class="kv__hint">Drag to rotate</span>
+          </div>
+          <div class="kv__bar">
+            <div class="kv__row">
+              <span class="kv__row-label">Mode</span>
+              <button class="kv__chip is-active" type="button" data-mode="assembled">Assembled</button>
+              <button class="kv__chip" type="button" data-mode="exploded">Exploded</button>
+              <button class="kv__chip" type="button" data-mode="open">Door open</button>
+              <button class="kv__chip" type="button" data-mode="convection">Convection</button>
+              <button class="kv__chip" type="button" data-mode="cooling">Cooling</button>
+            </div>
+            <div class="kv__row">
+              <span class="kv__row-label">Explode</span>
+              <input class="kv__range" type="range" min="0" max="100" value="0" aria-label="Explode the model">
+            </div>
+            <div class="kv__row">
+              <span class="kv__row-label">View</span>
+              <button class="kv__chip" type="button" data-view="front">Front</button>
+              <button class="kv__chip" type="button" data-view="angle">Angle</button>
+              <button class="kv__chip" type="button" data-view="side">Side</button>
+              <button class="kv__chip" type="button" data-view="top">Top</button>
+              <button class="kv__chip" type="button" data-view="back">Back</button>
+            </div>
+            <p class="kv__caption">Closed up: a rounded blue body, a door with a window and handle, a touch display and two dials.</p>
+          </div>
+        </div>
+        <p class="komtai-note">The model is rebuilt in code from my original design, so it is a simplified version and proportions are approximate.</p>
       </div>
 
       <div class="flow__step">
         <span class="flow__num">03</span>
-        <span class="section-label">Keeping it cool</span>
-        <h3 class="section-heading">A blower and air valves manage the heat</h3>
-        <p>A blower pulls heat out of the oven to control the temperature of the internal chamber. Air valves on the underside let air in and out around the inner chamber, which lowers the temperature of the oven body itself.</p>
-        <img class="full-image full-image--flat komtai-img" src="../../images/komtai-airflow.png" alt="Komtai oven body with arrows showing warm air leaving through the top" width="345" height="275">
+        <span class="section-label">Exploded view</span>
+        <h3 class="section-heading">Five parts, one object</h3>
+        <p>Pulled apart along its depth, the oven is built from a few clear parts that slide together.</p>
+        <img class="full-image full-image--flat komtai-img komtai-img--wide" src="../../images/komtai-3d-exploded.png" alt="Exploded 3D render of the Komtai oven: the door with controls, the tray, the wire rack, the oven body and the fan unit with its cable" width="1600" height="810">
+        <div class="kparts">
+          <div class="brief-card"><span class="brief-card__label"><i></i>Door + controls</span><p>A blue door with a glass window, a chrome handle, a touch display and two dials.</p></div>
+          <div class="brief-card"><span class="brief-card__label"><i></i>Tray</span><p>A flat tray that slides in and out on the rack.</p></div>
+          <div class="brief-card"><span class="brief-card__label"><i></i>Wire rack</span><p>Side rails at several heights, so food can sit closer to or further from the fan.</p></div>
+          <div class="brief-card"><span class="brief-card__label"><i></i>Oven body</span><p>The rounded shell around the inner chamber, with a slit on top and valves underneath.</p></div>
+          <div class="brief-card"><span class="brief-card__label"><i></i>Fan unit</span><p>The convection fan on the back wall, the blower behind it and the power cable.</p></div>
+        </div>
       </div>
 
       <div class="flow__step">
         <span class="flow__num">04</span>
+        <span class="section-label">Convection</span>
+        <h3 class="section-heading">A fan moves the heat around the food</h3>
+        <p>A convection oven has a fan that circulates air around the food, which gives very even heat. The extra circulation cooks food faster than a conventional oven without a fan, and the baking comes out smooth and consistent.</p>
+        <div class="two-photo komtai-pair">
+          <img class="full-image full-image--flat" src="../../images/komtai-3d-convection.png" alt="3D render of the open Komtai oven with arrows showing hot air circulating around the fan" width="1074" height="782">
+          <img class="full-image full-image--flat" src="../../images/komtai-interior.png" alt="Original view inside the Komtai oven: a fan on the back wall with arrows showing air circulating around the tray" width="400" height="255">
+        </div>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">05</span>
+        <span class="section-label">Keeping it cool</span>
+        <h3 class="section-heading">A blower and air valves manage the heat</h3>
+        <p>A blower pulls heat out of the oven to control the temperature of the internal chamber. Air valves on the underside let air in and out around the inner chamber, which lowers the temperature of the oven body itself.</p>
+        <div class="two-photo komtai-pair">
+          <img class="full-image full-image--flat" src="../../images/komtai-3d-cooling.png" alt="See-through 3D render of the Komtai oven: warm air rising out of the top slit and cool air flowing in underneath" width="1216" height="936">
+          <img class="full-image full-image--flat" src="../../images/komtai-airflow.png" alt="Original view of the Komtai oven body with arrows showing warm air leaving through the top" width="345" height="275">
+        </div>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">06</span>
         <span class="section-label">Controls</span>
         <h3 class="section-heading">A touch display and two dials</h3>
         <p>A touch LCD shows the date and time, even in sleep mode, and lets you adjust temperature and time by touch. Two dials do the same job physically: TEMP sets the cooking temperature and TIME sets the cooking time.</p>
-        <img class="full-image full-image--flat komtai-img" style="max-width:300px" src="../../images/komtai-controls.png" alt="Close-up of the Komtai controls: touch display showing 22:10, a TEMP dial and a TIME dial" width="260" height="380">
+        <div class="two-photo komtai-pair komtai-pair--tall">
+          <img class="full-image full-image--flat" src="../../images/komtai-3d-controls.png" alt="3D render close-up of the Komtai controls: a touch display showing 22:10, a Temp dial and a Time dial" width="460" height="900">
+          <img class="full-image full-image--flat" src="../../images/komtai-controls.png" alt="Original close-up of the Komtai controls: touch display showing 22:10, a TEMP dial and a TIME dial" width="260" height="380">
+        </div>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">07</span>
+        <span class="section-label">Every angle</span>
+        <h3 class="section-heading">Front, side, top and back</h3>
+        <div class="komtai-gallery">
+          <figure><img class="full-image full-image--flat" src="../../images/komtai-3d-front.png" alt="Front view of the Komtai oven" width="1300" height="824"><figcaption>Front</figcaption></figure>
+          <figure><img class="full-image full-image--flat" src="../../images/komtai-3d-side.png" alt="Side view of the Komtai oven" width="1024" height="878"><figcaption>Side</figcaption></figure>
+          <figure><img class="full-image full-image--flat" src="../../images/komtai-3d-top.png" alt="Top view of the Komtai oven with the warm air slit" width="1293" height="1000"><figcaption>Top</figcaption></figure>
+          <figure><img class="full-image full-image--flat" src="../../images/komtai-3d-back.png" alt="Back view of the Komtai oven with the blower and power cable" width="1022" height="861"><figcaption>Back</figcaption></figure>
+        </div>
       </div>
 
     </div>
@@ -94,7 +169,8 @@
   </section>
 </main>
 
-<script src="../../script.js?v=1790961929_6709"></script>
+<script src="../../script.js?v=1790962677_7536"></script>
+<script src="komtai-viewer.js?v=4"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
