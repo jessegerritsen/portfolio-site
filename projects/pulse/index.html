@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse — Maede Khademi</title>
+<meta name="description" content="Pulse: a city emissions dashboard with an AI-assisted insight layer, a UX/UI concept case study.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=1792503326_18036">
+</head>
+<body class="pulse-page">
+
+<a class="floating-mail" href="mailto:maedekhademi@outlook.com" aria-label="Email Maede">
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 12 13l9-6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+  Mail
+</a>
+
+<main>
+  <section class="case-study">
+    <div class="case-study__glow"></div>
+    <div class="case-study__topbar">
+      <a class="case-study__back" href="../../#projects">
+        Back
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+    </div>
+    <div class="case-study__hero">
+      <div class="case-study__media pulse-hero">
+        <img class="pulse-hero__img" src="../../images/pulse-laptop.jpg" alt="Pulse city emissions dashboard on a laptop" width="1815" height="1362">
+      </div>
+      <div class="case-study__info">
+        <h1>Pulse</h1>
+        <span class="case-study__eyebrow">Problem solved</span>
+        <p class="case-study__problem">Designed as a proof-of-concept for how a data-and-design consultancy might approach a public-sector analytics engagement: structuring messy data, designing an interface around real decisions, and layering in conversational AI so non-technical stakeholders can ask questions in plain language.</p>
+        <div class="case-study__meta">
+          <span>Independent project</span><br>
+          <span>3 months</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="flow">
+
+      <div class="flow__step">
+        <span class="flow__num">01</span>
+        <span class="section-label">The idea</span>
+        <h3 class="section-heading">From raw emissions data to a decision-ready dashboard</h3>
+        <p>Turning raw municipal emissions data into a decision-ready dashboard for city sustainability officers, with an AI-assisted insight layer.</p>
+        <img class="full-image full-image--flat pulse-img" src="../../images/pulse-tablet.png" alt="Pulse drill-down screen on a tablet held in one hand" width="1000" height="1180" style="max-width:520px">
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">02</span>
+        <span class="section-label">The brief</span>
+        <h3 class="section-heading">A dashboard that has to justify a budget, not just display numbers</h3>
+        <p>A mid-sized city&rsquo;s sustainability office tracks energy use, emissions, and project spend across departments, but the data lives in disconnected spreadsheets. Ahead of the annual council budget review, the sustainability officer needs one place that shows what&rsquo;s working, what&rsquo;s falling behind, and where the next euro should go &mdash; understandable to council members who aren&rsquo;t data people.</p>
+        <div class="brief-grid">
+          <div class="brief-card"><span class="brief-card__label">Primary user</span><p>City sustainability officer, presenting to a non-technical council. Needs credibility and speed, not raw data exploration.</p></div>
+          <div class="brief-card"><span class="brief-card__label">Core decisions</span><p>Which sectors are on track to meet emissions targets? Where is spend underperforming? What should next year&rsquo;s budget prioritize?</p></div>
+        </div>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">03</span>
+        <span class="section-label">Screen 01 &mdash; Overview</span>
+        <h3 class="section-heading">One glance, three questions answered</h3>
+        <p>KPI cards surface the numbers that open every council conversation. The trend line shows momentum, the sector chart shows where emissions actually come from, so nobody has to ask &ldquo;compared to what?&rdquo;</p>
+        <img class="full-image full-image--flat pulse-img" src="../../images/pulse-overview.png" alt="Pulse overview screen: four KPI cards, an emissions trend line, emissions by sector bars and an Ask Pulse query panel" width="1414" height="1038">
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">04</span>
+        <span class="section-label">Screen 02 &mdash; Drill-down</span>
+        <h3 class="section-heading">From &ldquo;what happened&rdquo; to &ldquo;what do I do next&rdquo;</h3>
+        <p>Clicking any KPI or bar opens a project-level view, so the officer can go from a council-level number to the specific initiative behind it without leaving the flow.</p>
+        <img class="full-image full-image--flat pulse-img" src="../../images/pulse-drilldown.png" alt="Pulse drill-down screen: transport sector active projects table with status and an Ask Pulse answer about the fleet conversion project" width="1414" height="835">
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">05</span>
+        <span class="section-label">Process</span>
+        <h3 class="section-heading">Research &rarr; structure &rarr; design &rarr; prototype</h3>
+        <div class="pulse-process">
+          <div class="brief-card"><span class="brief-card__label">01 &middot; Define the decisions</span><p>Framed the dashboard around three questions the officer needed to answer in council, not around the data that happened to exist.</p></div>
+          <div class="brief-card"><span class="brief-card__label">02 &middot; Structure the data</span><p>Cleaned and joined a public open-data set (CBS Statline-style municipal energy data) using SQL, modeling it into sector, district, and project levels.</p></div>
+          <div class="brief-card"><span class="brief-card__label">03 &middot; Design the hierarchy</span><p>Wireframed as overview-to-detail flow: KPIs first, trend and comparison second, drill-down last &mdash; so no one gets lost in the data.</p></div>
+          <div class="brief-card"><span class="brief-card__label">04 &middot; Prototype the AI layer</span><p>Mocked a natural-language query panel to test whether plain-English answers reduce the need to interpret charts manually.</p></div>
+        </div>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">06</span>
+        <span class="section-label">Outcome</span>
+        <h3 class="section-heading">What this project demonstrates</h3>
+        <ul class="pulse-list">
+          <li>Translating a business/policy problem into an information hierarchy, not just a chart layout</li>
+          <li>Working hands-on with structured data (SQL-modeled) rather than designing on placeholder content</li>
+          <li>Interaction design for drill-down and filtering across two connected screens</li>
+          <li>An early, testable take on conversational AI &mdash; where AI supports interpretation instead of replacing the visualization</li>
+        </ul>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">07</span>
+        <span class="section-label">Tools</span>
+        <h3 class="section-heading">What I used</h3>
+        <div class="pill-row pulse-tools">
+          <span class="pill">Figma</span><span class="pill">Power BI</span><span class="pill">SQL</span><span class="pill">CBS open data</span><span class="pill">User interviews</span>
+        </div>
+        <p class="komtai-note">Concept case study, designed to demonstrate dashboard and interaction design for data-driven decision-making.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section footer-section">
+    <div class="center">
+      <a href="mailto:maedekhademi@outlook.com" class="btn btn--dark">Connect with me <span class="arrow">↗</span></a>
+    </div>
+    <footer class="footer">
+      <span>© <span id="year"></span> Maede Khademi</span>
+      <div class="footer__links">
+        <a href="../../#home">Home</a>
+        <a href="../../files/MKH-CV.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#contact">Contact</a>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<script src="../../script.js?v=1792503326_18036"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
