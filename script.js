@@ -726,3 +726,41 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   addEventListener('load', fit);
   fit();
 })();
+
+/* Pulse thumbnail: the dashboard builds up as you scroll */
+(function () {
+  const sec = document.getElementById('pul');
+  if (!sec) return;
+  const pin = sec.querySelector('.pul-pin');
+  const counts = sec.querySelectorAll('[data-count]');
+  const R = (x, a, b) => Math.max(0, Math.min(1, (x - a) / (b - a)));
+  const ease = x => x * x * (3 - 2 * x);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+  function paint() {
+    ticking = false;
+    const top = parseFloat(getComputedStyle(pin).top) || 0;
+    const span = sec.offsetHeight - pin.offsetHeight - innerHeight * .55;
+    const p = reduce ? 1 : R(top - sec.getBoundingClientRect().top, 0, span);
+    const set = (k, v) => sec.style.setProperty(k, v.toFixed(4));
+    set('--a', ease(R(p, 0, .1)));
+    set('--l', ease(R(p, .1, .32)));
+    set('--b', ease(R(p, .12, .32)));
+    set('--q', R(p, .34, .46));
+    set('--r', ease(R(p, .47, .56)));
+    set('--v', ease(R(p, .62, .7)));
+    set('--t', R(p, .68, .8));
+    set('--q2', R(p, .78, .88));
+    set('--r2', ease(R(p, .89, .97)));
+    set('--prog', p);
+    const k = ease(R(p, .04, .3));
+    counts.forEach(el => {
+      const v = (+el.dataset.count * k).toFixed(+el.dataset.dec);
+      el.textContent = (el.dataset.pre || '') + v + (el.dataset.suf || '');
+    });
+  }
+  function req() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  addEventListener('scroll', req, { passive: true });
+  addEventListener('resize', req);
+  paint();
+})();
