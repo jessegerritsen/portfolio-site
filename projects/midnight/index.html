@@ -18,8 +18,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css?v=1792503678_18361">
 <style>
-  /* the laptop mockup was built for a video; this lets it hold a still screenshot */
-  .mac-mockup__screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  /* hero: a bigger laptop that plays the screen recording */
+  .mac-mockup__screen video{border-radius:0;box-shadow:none;object-position:top}
+  @media (min-width:901px){
+    .case-study__topbar,.case-study__hero{max-width:1280px}
+    .case-study__hero{grid-template-columns:minmax(0,2.2fr) minmax(0,.8fr);gap:56px}
+    .case-study__hero .mac-mockup{max-width:880px}
+    .case-study__hero .mac-mockup__lid{padding:18px 18px 12px;border-radius:20px}
+    .case-study__hero .mac-mockup__screen{border-radius:10px}
+  }
+  /* hover section: each interaction as a short looping clip */
+  .hover-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+  .hover-card{margin:0;background:var(--card-alt);border-radius:var(--radius-md);box-shadow:var(--shadow);overflow:hidden}
+  .hover-card--wide{grid-column:1 / -1}
+  .hover-card img{display:block;width:100%;height:auto;background:#050f1e}
+  .hover-card figcaption{padding:16px 20px 20px;font-size:.85rem;line-height:1.65;color:var(--ink-soft)}
+  .hover-card figcaption strong{display:block;margin-bottom:4px;font-family:'Quicksand',sans-serif;font-size:.95rem;color:var(--ink)}
+  @media (max-width:640px){.hover-grid{grid-template-columns:1fr}}
+  /* on a phone the notch would sit on top of the site's own menu */
+  @media (max-width:900px){.case-study__hero .mac-mockup__notch{display:none}}
 </style>
 </head>
 <body>
@@ -44,7 +61,7 @@
           <div class="mac-mockup__lid">
             <div class="mac-mockup__notch"></div>
             <div class="mac-mockup__screen">
-              <img src="../../images/midnight-hero.webp" alt="Midnight home page: the wordmark between a large moon and clouds on a night sky" width="2160" height="1350">
+              <video src="../../videos/midnight-demo.mp4" poster="../../images/midnight-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Screen recording of the Midnight prototype: the wordmark rising between a moon and clouds, then scrolling through the home page to the store"></video>
             </div>
           </div>
           <div class="mac-mockup__hinge"></div>
@@ -97,6 +114,40 @@
 
       <div class="flow__step">
         <span class="flow__num">03</span>
+        <span class="section-label">Hover &amp; interaction</span>
+        <h3 class="section-heading">Everything you point at answers back</h3>
+        <p>Every control has a hover state, and none of them changes the size of what it sits on, so the page never jumps under the cursor. The same few moves repeat everywhere: things lift a few pixels, a light follows the pointer, and colour fills in from one side. Here is each one, recorded from the prototype.</p>
+        <div class="hover-grid">
+          <figure class="hover-card hover-card--wide">
+            <img src="../../images/midnight-hover-nav.gif" alt="Hovering the Home, Store and About Us links in turn, then the Contact us button: an underline sweeps in under each link and the button fills white" width="860" height="176" loading="lazy">
+            <figcaption><strong>Navigation</strong>The underline sweeps in from the left and leaves to the right, and the link lifts 2px. The outlined Contact us button fills white from the left, with a soft cream glow underneath.</figcaption>
+          </figure>
+          <figure class="hover-card hover-card--wide">
+            <img src="../../images/midnight-hover-pills.gif" alt="Moving across the Midnight Light, Midnight Bite and Midnight Talk buttons: each lifts, its label slides left and an arrow appears" width="760" height="200" loading="lazy">
+            <figcaption><strong>Collection buttons</strong>The label slides left to make room for an arrow that fades in, the pill lifts, and a light follows the cursor across the glass. The arrow sits outside the label&rsquo;s box, so the pill never changes size.</figcaption>
+          </figure>
+          <figure class="hover-card">
+            <img src="../../images/midnight-hover-button.gif" alt="Hovering the white Explore more button: it fills navy from below, the text turns white and the arrow nudges right" width="520" height="325" loading="lazy">
+            <figcaption><strong>Buttons</strong>The white button fills navy from below, the text flips to white, the arrow nudges 5px to the right and the whole button lifts with a warm glow.</figcaption>
+          </figure>
+          <figure class="hover-card">
+            <img src="../../images/midnight-hover-tilt.gif" alt="Moving the cursor across the framed photo: the frame tilts in 3D toward the cursor while the picture slowly zooms" width="520" height="325" loading="lazy">
+            <figcaption><strong>Framed photos</strong>The frame tilts up to 9&deg; in 3D toward the cursor, the picture inside slowly zooms in, and the border picks up a cream glow. It settles back flat when the cursor leaves.</figcaption>
+          </figure>
+          <figure class="hover-card">
+            <img src="../../images/midnight-hover-chips.gif" alt="Hovering the All, Midnight Light, Midnight Bite and Midnight Talk filter chips: each lifts and a light follows the cursor" width="620" height="388" loading="lazy">
+            <figcaption><strong>Filter chips</strong>Chips lift, brighten their border and carry a light that follows the cursor. The active chip stays solid white with its count in a navy bubble.</figcaption>
+          </figure>
+          <figure class="hover-card">
+            <img src="../../images/midnight-hover-card.gif" alt="Hovering product cards in the store: the card lifts, its border brightens and the photo zooms in slightly" width="600" height="375" loading="lazy">
+            <figcaption><strong>Product cards</strong>The card lifts 6px, its border brightens, a faint glow spreads underneath and the photo eases in by 6%.</figcaption>
+          </figure>
+        </div>
+        <p style="margin-top:24px;">Checkout speaks the same language: the payment tiles lift and brighten, the selected tile turns solid white, and the terms checkbox draws its tick. On the order page the moon follows the cursor, and a click sends a sweep of light across it.</p>
+      </div>
+
+      <div class="flow__step">
+        <span class="flow__num">04</span>
         <span class="section-label">Store &amp; product</span>
         <h3 class="section-heading">Three collections, one template</h3>
         <p>Filter chips with live counts switch between Midnight Light, Bite and Talk, and every &ldquo;Explore more&rdquo; on the home page opens the store already filtered. One product template serves every piece, and the cart is a drawer that remembers what you added.</p>
@@ -108,7 +159,7 @@
       </div>
 
       <div class="flow__step">
-        <span class="flow__num">04</span>
+        <span class="flow__num">05</span>
         <span class="section-label">Checkout &amp; order</span>
         <h3 class="section-heading">Checkout that fits a business or an individual</h3>
         <p>Buyers order as an individual or a business, enter shipping and billing addresses, choose Apple Pay, card or PayPal, add a voucher and accept the terms. After confirming, the order page draws a moon seal, shows the receipt, and the moon then follows the cursor. Prices are in Canadian dollars. The checkout is a prototype, so no payment is taken.</p>
@@ -120,7 +171,7 @@
       </div>
 
       <div class="flow__step">
-        <span class="flow__num">05</span>
+        <span class="flow__num">06</span>
         <span class="section-label">Every screen</span>
         <h3 class="section-heading">The same night, down to a phone</h3>
         <p>The layout adapts from desktop to phone: a mobile menu, a checkout that puts the order summary first, and quieter backgrounds so text stays readable. The prototype is shared as a private preview. Its pages and images are encrypted and open with an access code.</p>
