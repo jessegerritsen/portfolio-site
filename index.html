@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=1792503678_18361">
+<style>
+  /* the Midnight card uses a portrait crop on phones, so the wordmark isn't cut off */
+  @media (max-width:700px){.project-panel__media--dark .midnight-card-img{object-position:center 90%}}
+</style>
 </head>
 <body>
 
@@ -293,8 +297,33 @@
         </section>
       </div>
 
-      <div class="project-panel project-panel--live">
+      <div class="project-hold">
+      <a class="project-panel reveal" href="projects/midnight/">
         <span class="project-panel__index">04</span>
+        <div class="project-panel__media project-panel__media--dark">
+          <div class="project-panel__parallax" data-parallax>
+            <picture>
+              <source media="(max-width:700px)" srcset="images/midnight-hero-phone.webp">
+              <img class="project-panel__img midnight-card-img" src="images/midnight-hero.webp" alt="Midnight home page: the wordmark between a large moon and clouds on a night sky" width="2160" height="1350" loading="lazy">
+            </picture>
+          </div>
+          <div class="project-panel__info">
+            <div class="project-panel__text">
+              <h3 class="project-panel__title" data-reveal-words>Midnight: a night-sky storefront for painted candles and confections</h3>
+              <p class="project-panel__desc">Web design and a working prototype: a scroll-driven night sky, a three-collection store, a full checkout and an animated order page.</p>
+            </div>
+            <div class="project-panel__meta">
+              <span class="proj-card__kind">Client</span>
+              <span class="tag">Web design</span>
+              <span class="tag">Prototyping</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+
+      <div class="project-panel project-panel--live">
+        <span class="project-panel__index">05</span>
         <section class="pbs" id="pbs" aria-label="Plant B app screens, arriving as you scroll">
           <div class="pbs-pin">
             <div class="pbs-stage">
@@ -325,7 +354,7 @@
 
       <div class="project-hold">
       <a class="project-panel reveal" href="projects/komtai/">
-        <span class="project-panel__index">05</span>
+        <span class="project-panel__index">06</span>
         <div class="project-panel__media">
           <canvas class="komtai-live" aria-hidden="true"></canvas>
           <div class="scroll-prog scroll-prog--komtai" aria-hidden="true"><i></i></div>
