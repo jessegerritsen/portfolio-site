@@ -2167,3 +2167,13 @@ img.badge--photo{
 .pul-ask{box-shadow:0 -12px 30px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.07)}
 .pul-card{min-height:clamp(140px,28cqw,240px)}
 @media (max-width:820px){.pul-dash{padding-bottom:14px}.pul-card{min-height:120px}}
+
+/* Phones: shorter pinned stories. The Snapp, Pulse and Plant B stories were 3 to 4.75
+   screens long and each held the page for another half screen, which took a lot of thumb
+   effort. Same stories, less travel; script.js (pinHold) reads the same short hold. */
+@media (max-width:820px){
+  .s2s{height:300vh}
+  .pul{height:300vh}
+  .pbs{height:250vh}
+  .project-hold::after{height:20vh}
+}

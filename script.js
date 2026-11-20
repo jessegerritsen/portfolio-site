@@ -1,5 +1,10 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// How many screens a pinned panel stays put after its story has finished. Phones get a
+// short hold, because every extra screen is another swipe with nothing moving (the CSS
+// section heights in the "Phones: shorter pinned stories" block use the same idea).
+const pinHold = () => (matchMedia('(max-width: 820px)').matches ? .2 : .55);
+
 // Intro: text holds, a drop grows to cover the page, the page fades in underneath it,
 // then that same drop shrinks in place into the decorative blob on the hero
 const introEl = document.getElementById('introSplash');
@@ -618,9 +623,9 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   function prog() {
     const r = sec.getBoundingClientRect();
     const top = parseFloat(getComputedStyle(pin).top) || 0;
-    return { pre: R(innerHeight - r.top, innerHeight * .1, innerHeight * .95), p: R(top - r.top, 0, sec.offsetHeight - pin.offsetHeight - innerHeight * .55) };
+    return { pre: R(innerHeight - r.top, innerHeight * .1, innerHeight * .95), p: R(top - r.top, 0, sec.offsetHeight - pin.offsetHeight - innerHeight * pinHold()) };
   }
-  let cur = 0, curPre = 0, lastK = -1;
+  let cur = 0, curPre = 0, lastK = -1, drawnP = -1, drawnPre = -1;
   function paint(pre, p) {
     const v = (n, x) => sec.style.setProperty(n, x.toFixed(4));
     v('--pre', pre);
@@ -648,12 +653,14 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
     const t = prog();
     cur = smooth ? cur + (t.p - cur) * .12 : t.p;  if (Math.abs(t.p - cur) < .0005) cur = t.p;
     curPre = smooth ? curPre + (t.pre - curPre) * .12 : t.pre;
-    paint(curPre, cur);
+    // repaint only while something is still moving; idle frames used to rewrite ~20 CSS
+    // variables on the section, which is wasted work on a phone
+    if (cur !== drawnP || curPre !== drawnPre) { paint(curPre, cur); drawnP = cur; drawnPre = curPre; }
     requestAnimationFrame(loop);
   })();
   btns.forEach(b => b.addEventListener('click', () => {
     const top = parseFloat(getComputedStyle(pin).top) || 0;
-    const y = scrollY + sec.getBoundingClientRect().top - top + (+b.dataset.p) * (sec.offsetHeight - pin.offsetHeight - innerHeight * .55);
+    const y = scrollY + sec.getBoundingClientRect().top - top + (+b.dataset.p) * (sec.offsetHeight - pin.offsetHeight - innerHeight * pinHold());
     scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
   }));
 })();
@@ -670,7 +677,7 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   function paint() {
     ticking = false;
     const top = parseFloat(getComputedStyle(pin).top) || 0;
-    const span = sec.offsetHeight - pin.offsetHeight - innerHeight * .55;
+    const span = sec.offsetHeight - pin.offsetHeight - innerHeight * pinHold();
     const p = reduce ? 1 : R(top - sec.getBoundingClientRect().top, 0, span);
     const set = (k, v) => sec.style.setProperty(k, v.toFixed(4));
     set('--prog', p);
@@ -740,7 +747,7 @@ document.querySelectorAll('[data-reveal-words]').forEach(el => wordObserver.obse
   function paint() {
     ticking = false;
     const top = parseFloat(getComputedStyle(pin).top) || 0;
-    const span = sec.offsetHeight - pin.offsetHeight - innerHeight * .55;
+    const span = sec.offsetHeight - pin.offsetHeight - innerHeight * pinHold();
     const p = reduce ? 1 : R(top - sec.getBoundingClientRect().top, 0, span);
     const set = (k, v) => sec.style.setProperty(k, v.toFixed(4));
     set('--a', ease(R(p, 0, .1)));
